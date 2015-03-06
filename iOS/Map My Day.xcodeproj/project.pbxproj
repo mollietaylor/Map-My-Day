@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		EC13A7BC1AA4D39E00B9AD6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */; };
-		EC13A7BE1AA4D39E00B9AD6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7BD1AA4D39E00B9AD6F /* ViewController.swift */; };
 		EC13A7C11AA4D39E00B9AD6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */; };
 		EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */; };
 		EC13A7C61AA4D39E00B9AD6F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */; };
 		EC13A7D21AA4D39E00B9AD6F /* Map_My_DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7D11AA4D39E00B9AD6F /* Map_My_DayTests.swift */; };
+		EC13A7DC1AA4D40D00B9AD6F /* TrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DB1AA4D40D00B9AD6F /* TrackingVC.swift */; };
+		EC13A7DE1AA4DD1000B9AD6F /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DD1AA4DD1000B9AD6F /* Math.swift */; };
+		ECF647C11AA68E13000E9CCF /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF647C01AA68E13000E9CCF /* Data.swift */; };
+		ECF647C21AA692F3000E9CCF /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +32,16 @@
 		EC13A7B61AA4D39E00B9AD6F /* Map My Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map My Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC13A7BA1AA4D39E00B9AD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC13A7BD1AA4D39E00B9AD6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC13A7C01AA4D39E00B9AD6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC13A7C51AA4D39E00B9AD6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EC13A7CB1AA4D39E00B9AD6F /* Map My DayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map My DayTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC13A7D01AA4D39E00B9AD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC13A7D11AA4D39E00B9AD6F /* Map_My_DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_My_DayTests.swift; sourceTree = "<group>"; };
+		EC13A7DB1AA4D40D00B9AD6F /* TrackingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingVC.swift; sourceTree = "<group>"; };
+		EC13A7DD1AA4DD1000B9AD6F /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		ECF647C01AA68E13000E9CCF /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +83,10 @@
 		EC13A7B81AA4D39E00B9AD6F /* Map My Day */ = {
 			isa = PBXGroup;
 			children = (
-				EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */,
-				EC13A7BD1AA4D39E00B9AD6F /* ViewController.swift */,
+				ECF647C01AA68E13000E9CCF /* Data.swift */,
+				EC13A7DD1AA4DD1000B9AD6F /* Math.swift */,
+				EC13A7DB1AA4D40D00B9AD6F /* TrackingVC.swift */,
 				EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */,
-				EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */,
-				EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */,
 				EC13A7B91AA4D39E00B9AD6F /* Supporting Files */,
 			);
 			path = "Map My Day";
@@ -90,7 +95,11 @@
 		EC13A7B91AA4D39E00B9AD6F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */,
+				EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */,
+				EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */,
 				EC13A7BA1AA4D39E00B9AD6F /* Info.plist */,
+				EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -161,6 +170,11 @@
 				TargetAttributes = {
 					EC13A7B51AA4D39E00B9AD6F = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					EC13A7CA1AA4D39E00B9AD6F = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -193,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC13A7C11AA4D39E00B9AD6F /* Main.storyboard in Resources */,
+				ECF647C21AA692F3000E9CCF /* fontawesome-webfont.ttf in Resources */,
 				EC13A7C61AA4D39E00B9AD6F /* LaunchScreen.xib in Resources */,
 				EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */,
 			);
@@ -212,8 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC13A7BE1AA4D39E00B9AD6F /* ViewController.swift in Sources */,
 				EC13A7BC1AA4D39E00B9AD6F /* AppDelegate.swift in Sources */,
+				EC13A7DC1AA4D40D00B9AD6F /* TrackingVC.swift in Sources */,
+				EC13A7DE1AA4DD1000B9AD6F /* Math.swift in Sources */,
+				ECF647C11AA68E13000E9CCF /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Map My Day/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -349,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Map My Day/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -407,6 +426,7 @@
 				EC13A7D71AA4D39E00B9AD6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC13A7D81AA4D39E00B9AD6F /* Build configuration list for PBXNativeTarget "Map My DayTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +435,7 @@
 				EC13A7DA1AA4D39E00B9AD6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
