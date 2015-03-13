@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--PhotoVC-->
+        <scene sceneID="VeO-eN-VcE">
+            <objects>
+                <viewController storyboardIdentifier="photoVC" id="Ini-dF-f4D" customClass="PhotoVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8UK-6D-GSt"/>
+                        <viewControllerLayoutGuide type="bottom" id="eJE-EI-Z18"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JyC-0V-YUE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Azn-Ga-XF1">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="476"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3t-sD-djb">
+                                <rect key="frame" x="16" y="536" width="276" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="G9j-pJ-I4i"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.98363269689999999" blue="0.32773833009999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cls-8N-SQB">
+                                <rect key="frame" x="308" y="536" width="276" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vMI-Ck-B4o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="0.98363269689999999" blue="0.32773833009999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCi-G5-RYs">
+                                <rect key="frame" x="20" y="484" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Take Photo">
+                                    <color key="titleColor" red="1" green="0.98363269689999999" blue="0.32773833009999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="Ini-dF-f4D" eventType="touchUpInside" id="j7m-Ae-lBY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23851266769999999" green="0.84303977269999997" blue="0.17475515229999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Azn-Ga-XF1" secondAttribute="trailing" constant="-16" id="4le-hC-whP"/>
+                            <constraint firstItem="cls-8N-SQB" firstAttribute="trailing" secondItem="JyC-0V-YUE" secondAttribute="trailingMargin" id="4zj-Kt-FGV"/>
+                            <constraint firstAttribute="centerX" secondItem="gCi-G5-RYs" secondAttribute="centerX" id="Gn2-vx-kao"/>
+                            <constraint firstItem="i3t-sD-djb" firstAttribute="leading" secondItem="JyC-0V-YUE" secondAttribute="leadingMargin" id="HXb-Hg-hRc"/>
+                            <constraint firstItem="Azn-Ga-XF1" firstAttribute="leading" secondItem="JyC-0V-YUE" secondAttribute="leadingMargin" constant="-16" id="Nyh-oq-G7L"/>
+                            <constraint firstItem="Azn-Ga-XF1" firstAttribute="top" secondItem="JyC-0V-YUE" secondAttribute="topMargin" id="OOE-ju-jNk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gCi-G5-RYs" secondAttribute="trailing" constant="4" id="bPw-7P-rIO"/>
+                            <constraint firstItem="cls-8N-SQB" firstAttribute="width" secondItem="i3t-sD-djb" secondAttribute="width" id="gHP-Dv-mCz"/>
+                            <constraint firstItem="gCi-G5-RYs" firstAttribute="leading" secondItem="JyC-0V-YUE" secondAttribute="leadingMargin" constant="4" id="iV3-ve-wB6"/>
+                            <constraint firstItem="gCi-G5-RYs" firstAttribute="top" secondItem="Azn-Ga-XF1" secondAttribute="bottom" constant="8" id="jcP-NB-Y55"/>
+                            <constraint firstItem="eJE-EI-Z18" firstAttribute="top" secondItem="i3t-sD-djb" secondAttribute="bottom" constant="20" id="qgw-gR-46X"/>
+                            <constraint firstItem="eJE-EI-Z18" firstAttribute="top" secondItem="cls-8N-SQB" secondAttribute="bottom" constant="20" id="qoN-GJ-ZqI"/>
+                            <constraint firstItem="cls-8N-SQB" firstAttribute="top" secondItem="gCi-G5-RYs" secondAttribute="bottom" constant="22" id="x39-N8-Z78"/>
+                            <constraint firstItem="cls-8N-SQB" firstAttribute="leading" secondItem="i3t-sD-djb" secondAttribute="trailing" constant="16" id="xZg-pS-Bv4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Azn-Ga-XF1" id="shn-MP-7cz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qKT-AW-o4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="412"/>
+        </scene>
+    </scenes>
+</document>
