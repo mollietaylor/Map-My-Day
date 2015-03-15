@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--PhotoVC-->
         <scene sceneID="VeO-eN-VcE">
             <objects>
-                <viewController storyboardIdentifier="photoVC" id="Ini-dF-f4D" customClass="PhotoVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoVC" id="Ini-dF-f4D" customClass="PhotoVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8UK-6D-GSt"/>
                         <viewControllerLayoutGuide type="bottom" id="eJE-EI-Z18"/>
@@ -31,6 +31,9 @@
                                     <color key="titleColor" red="1" green="0.98363269689999999" blue="0.32773833009999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelImage:" destination="Ini-dF-f4D" eventType="touchUpInside" id="Kn0-kg-4Ri"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cls-8N-SQB">
                                 <rect key="frame" x="308" y="536" width="276" height="44"/>
@@ -42,6 +45,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="1" green="0.98363269689999999" blue="0.32773833009999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveImage:" destination="Ini-dF-f4D" eventType="touchUpInside" id="1Nm-YY-68u"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCi-G5-RYs">
                                 <rect key="frame" x="20" y="484" width="560" height="30"/>
@@ -80,6 +86,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKT-AW-o4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="288" y="412"/>
+        </scene>
+        <!--TextVC-->
+        <scene sceneID="NnH-s8-HDH">
+            <objects>
+                <viewController storyboardIdentifier="textVC" id="6zM-82-aXs" customClass="TextVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Vp-Ww-ygi"/>
+                        <viewControllerLayoutGuide type="bottom" id="zQz-zb-gFe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UwC-RB-047" customClass="View" customModule="MapMyDay" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ev-dN-vu0">
+                                <rect key="frame" x="16" y="118" width="568" height="462"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FTI-G8-ngl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FTI-G8-ngl"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWY-qa-E6f">
+                                <rect key="frame" x="304" y="28" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="K1S-eg-ARi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveItem:" destination="6zM-82-aXs" eventType="touchUpInside" id="Y3s-pe-gIv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QZ-xC-N5s">
+                                <rect key="frame" x="16" y="28" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ceL-cm-wiw"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelItem:" destination="6zM-82-aXs" eventType="touchUpInside" id="YTT-Dl-Pbf"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ilV-y7-CBG">
+                                <rect key="frame" x="16" y="80" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aAt-JB-qRF"/>
+                                    <constraint firstAttribute="width" constant="97" id="bAQ-iz-JTU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bAQ-iz-JTU"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2QZ-xC-N5s" firstAttribute="top" secondItem="2Vp-Ww-ygi" secondAttribute="bottom" constant="8" id="0WN-cG-qtC"/>
+                            <constraint firstItem="ilV-y7-CBG" firstAttribute="leading" secondItem="UwC-RB-047" secondAttribute="leadingMargin" id="0qd-mq-Xeh"/>
+                            <constraint firstItem="gWY-qa-E6f" firstAttribute="width" secondItem="2QZ-xC-N5s" secondAttribute="width" id="53y-KI-euj"/>
+                            <constraint firstItem="gWY-qa-E6f" firstAttribute="top" secondItem="2Vp-Ww-ygi" secondAttribute="bottom" constant="8" id="8GJ-bi-80E"/>
+                            <constraint firstItem="5ev-dN-vu0" firstAttribute="leading" secondItem="UwC-RB-047" secondAttribute="leadingMargin" id="Dsz-ox-Ax2"/>
+                            <constraint firstItem="gWY-qa-E6f" firstAttribute="trailing" secondItem="UwC-RB-047" secondAttribute="trailingMargin" id="Jem-8s-3jx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5ev-dN-vu0" secondAttribute="trailing" id="NGs-lJ-0rt"/>
+                            <constraint firstItem="gWY-qa-E6f" firstAttribute="leading" secondItem="2QZ-xC-N5s" secondAttribute="trailing" constant="8" id="Nhi-gA-Twc"/>
+                            <constraint firstItem="ilV-y7-CBG" firstAttribute="top" secondItem="2Vp-Ww-ygi" secondAttribute="bottom" constant="60" id="VEA-X9-5PZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ilV-y7-CBG" secondAttribute="trailing" id="eeT-d8-ZgO"/>
+                            <constraint firstItem="5ev-dN-vu0" firstAttribute="top" secondItem="ilV-y7-CBG" secondAttribute="bottom" constant="8" id="hcm-sJ-lym"/>
+                            <constraint firstItem="zQz-zb-gFe" firstAttribute="top" secondItem="5ev-dN-vu0" secondAttribute="bottom" constant="20" id="l9s-fM-OVD"/>
+                            <constraint firstItem="2QZ-xC-N5s" firstAttribute="leading" secondItem="UwC-RB-047" secondAttribute="leadingMargin" id="qoP-ga-eTq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailBottomConstraint" destination="l9s-fM-OVD" id="cG6-7Z-JGH"/>
+                        <outlet property="itemDetail" destination="5ev-dN-vu0" id="e13-yq-Obn"/>
+                        <outlet property="itemTitle" destination="ilV-y7-CBG" id="gOP-DP-L49"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Isg-FT-2sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="412"/>
         </scene>
     </scenes>
 </document>

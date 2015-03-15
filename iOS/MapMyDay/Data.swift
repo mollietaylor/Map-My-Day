@@ -30,7 +30,7 @@ class Day: NSObject {
     //   "time":Float,
     //   "date":NSDate]]
 
-    var media: [[String:AnyObject]] = [[:]]
+    var photos: [[String:AnyObject]] = [[:]]
     // media example
     // [["medium":"photo",
     //  "time":NSDate,

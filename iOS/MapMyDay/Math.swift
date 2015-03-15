@@ -60,3 +60,11 @@ func stringifySecondCount(seconds: Int, usingLongFormat: Bool) -> String {
     
 }
 
+func dateformatterTime(date: NSDate) -> String {
+    
+    var dateFormatter: NSDateFormatter = NSDateFormatter()
+    dateFormatter.timeStyle = NSDateFormatterStyle.LongStyle
+    return dateFormatter.stringFromDate(date)
+    
+}
+

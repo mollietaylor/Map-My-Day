@@ -10,8 +10,6 @@ import UIKit
 
 class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // TODO: var seats: [PFObject]?
-    
     @IBOutlet weak var imageView: UIImageView!
     
     var imagePicker = UIImagePickerController()
@@ -50,7 +48,7 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         return true
     }
     
-    @IBAction func cancelFlag(sender: AnyObject) {
+    @IBAction func cancelImage(sender: AnyObject) {
         
         dismissViewControllerAnimated(true, completion: nil)
         
@@ -74,7 +72,12 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         var newImage = PFObject(className: "Image") // Media or Image
         newImage["user"] = PFUser.currentUser()
         
-        newImage["location"] = location
+        newImage["location"] = ["latitude":location.coordinate.latitude,
+            "longitude":location.coordinate.longitude,
+            "altitude":location.altitude,
+            "horizontalAccuracy":location.horizontalAccuracy,
+            "verticalAccuracy":location.verticalAccuracy,
+            "time":dateformatterTime(location.timestamp)]
         newImage["time"] = NSDate()
         
         let image = resizeImage(imageView.image!, withSize: CGSizeMake(540.0, 540.0))
@@ -84,6 +87,9 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         newImage["image"] = imageFile
 
         newImage.saveInBackground()
+        newImage.saveInBackgroundWithBlock { (success, error) -> Void in
+            photos.append(newImage.objectId)
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
         

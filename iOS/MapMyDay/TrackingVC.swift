@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
+// TODO: move these and possibly others to Data.swift
+var photos = [String]()
+var text = [String]()
+
 class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var currentModeImage: UIImageView!
@@ -182,19 +186,11 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
                                                "altitude":location.altitude,
                                                "horizontalAccuracy":location.horizontalAccuracy,
                                                "verticalAccuracy":location.verticalAccuracy,
-                                               "time":dateformatterDate(location.timestamp)])
+                                               "time":dateformatterTime(location.timestamp)])
             }
             
         }
         
-        
-    }
-    
-    func dateformatterDate(date: NSDate) -> String {
-        
-        var dateFormatter: NSDateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = NSDateFormatterStyle.LongStyle
-        return dateFormatter.stringFromDate(date)
         
     }
     
@@ -227,9 +223,12 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         currentDay["startTime"] = startTime
         currentDay["endTime"] = NSDate()
         currentDay["tracks"] = tracks
-        //        currentDay["media"] =
+        currentDay["photos"] = photos
+        currentDay["text"] = text
         
         currentDay.saveInBackground()
+        
+        // TODO: reset tracks, map, etc.
         
     }
     
@@ -249,7 +248,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
             println(currentMode)
             currentTrack = ["mode": currentMode,
                 "track": [[:]]]
-            
             
         } else {
             // pause
@@ -289,5 +287,19 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
     }
     
+    @IBAction func getText(sender: AnyObject) {
+        
+        let storyboard = UIStoryboard(name: "Media", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("textVC") as TextVC
+        
+        if let location = trackedLocations.last {
+            
+            vc.location = location
+            
+        } // TODO: what should it do if location tracking isn't on?
+        
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
 
 }

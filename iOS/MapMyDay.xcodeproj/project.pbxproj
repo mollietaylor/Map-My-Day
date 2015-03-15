@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC13A7C11AA4D39E00B9AD6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */; };
 		EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */; };
-		EC13A7C61AA4D39E00B9AD6F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */; };
 		EC13A7D21AA4D39E00B9AD6F /* Map_My_DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7D11AA4D39E00B9AD6F /* Map_My_DayTests.swift */; };
-		EC383EC81AB343D800396DA6 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC383ECA1AB343D800396DA6 /* Media.storyboard */; };
-		EC46EC0C1AB3441F000291A7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC46EC0E1AB3441F000291A7 /* Login.storyboard */; };
 		EC87B3B71AB3474B00FBE811 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF647C01AA68E13000E9CCF /* Data.swift */; };
 		EC87B3B81AB3474B00FBE811 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DD1AA4DD1000B9AD6F /* Math.swift */; };
 		EC87B3B91AB3474B00FBE811 /* TrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DB1AA4D40D00B9AD6F /* TrackingVC.swift */; };
 		EC87B3BA1AB3474B00FBE811 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9770191AB1C798001920AA /* LoginVC.swift */; };
 		EC87B3BB1AB3474B00FBE811 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE987921AB339DF00EF4995 /* PhotoVC.swift */; };
 		EC87B3BC1AB3474B00FBE811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */; };
+		EC87B3BD1AB34C8000FBE811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */; };
+		EC87B3BE1AB34C8000FBE811 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC46EC0E1AB3441F000291A7 /* Login.storyboard */; };
+		EC87B3BF1AB34C8000FBE811 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC383ECA1AB343D800396DA6 /* Media.storyboard */; };
+		EC87B3C01AB34C8000FBE811 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */; };
+		EC87B3C11AB34C9500FBE811 /* MapMyDay-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = EC97702E1AB1C92E001920AA /* MapMyDay-Bridging-Header.h */; };
 		EC97701D1AB1C820001920AA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701B1AB1C820001920AA /* Bolts.framework */; };
 		EC97701E1AB1C820001920AA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701C1AB1C820001920AA /* Parse.framework */; };
 		EC9770261AB1C89F001920AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701F1AB1C89F001920AA /* AudioToolbox.framework */; };
@@ -28,6 +29,7 @@
 		EC97702A1AB1C8A0001920AA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9770231AB1C89F001920AA /* MobileCoreServices.framework */; };
 		EC97702B1AB1C8A0001920AA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9770241AB1C89F001920AA /* StoreKit.framework */; };
 		EC97702C1AB1C8A0001920AA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC9770251AB1C89F001920AA /* SystemConfiguration.framework */; };
+		ECE0E9F81AB5BC1C004CD571 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0E9F71AB5BC1C004CD571 /* TextVC.swift */; };
 		ECF647C21AA692F3000E9CCF /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,7 @@
 		EC9770241AB1C89F001920AA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		EC9770251AB1C89F001920AA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EC97702E1AB1C92E001920AA /* MapMyDay-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MapMyDay-Bridging-Header.h"; sourceTree = "<group>"; };
+		ECE0E9F71AB5BC1C004CD571 /* TextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		ECE987921AB339DF00EF4995 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		ECF647C01AA68E13000E9CCF /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,8 +128,7 @@
 				EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */,
 				EC9770191AB1C798001920AA /* LoginVC.swift */,
 				EC46EC0E1AB3441F000291A7 /* Login.storyboard */,
-				ECE987921AB339DF00EF4995 /* PhotoVC.swift */,
-				EC383ECA1AB343D800396DA6 /* Media.storyboard */,
+				ECE0E9F91AB5BC2D004CD571 /* Media */,
 				EC13A7B91AA4D39E00B9AD6F /* Supporting Files */,
 				EC97702E1AB1C92E001920AA /* MapMyDay-Bridging-Header.h */,
 			);
@@ -176,6 +178,16 @@
 				EC97701C1AB1C820001920AA /* Parse.framework */,
 			);
 			name = Framework;
+			sourceTree = "<group>";
+		};
+		ECE0E9F91AB5BC2D004CD571 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				ECE987921AB339DF00EF4995 /* PhotoVC.swift */,
+				ECE0E9F71AB5BC1C004CD571 /* TextVC.swift */,
+				EC383ECA1AB343D800396DA6 /* Media.storyboard */,
+			);
+			name = Media;
 			sourceTree = "<group>";
 		};
 		ECE987911AB3397F00EF4995 /* Models */ = {
@@ -273,11 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC13A7C11AA4D39E00B9AD6F /* Main.storyboard in Resources */,
+				EC87B3BD1AB34C8000FBE811 /* Main.storyboard in Resources */,
+				EC87B3BE1AB34C8000FBE811 /* Login.storyboard in Resources */,
+				EC87B3BF1AB34C8000FBE811 /* Media.storyboard in Resources */,
+				EC87B3C01AB34C8000FBE811 /* LaunchScreen.xib in Resources */,
 				ECF647C21AA692F3000E9CCF /* fontawesome-webfont.ttf in Resources */,
-				EC13A7C61AA4D39E00B9AD6F /* LaunchScreen.xib in Resources */,
-				EC383EC81AB343D800396DA6 /* Media.storyboard in Resources */,
-				EC46EC0C1AB3441F000291A7 /* Login.storyboard in Resources */,
 				EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,10 +324,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC87B3C11AB34C9500FBE811 /* MapMyDay-Bridging-Header.h in Sources */,
 				EC87B3B71AB3474B00FBE811 /* Data.swift in Sources */,
 				EC87B3B81AB3474B00FBE811 /* Math.swift in Sources */,
 				EC87B3B91AB3474B00FBE811 /* TrackingVC.swift in Sources */,
 				EC87B3BA1AB3474B00FBE811 /* LoginVC.swift in Sources */,
+				ECE0E9F81AB5BC1C004CD571 /* TextVC.swift in Sources */,
 				EC87B3BB1AB3474B00FBE811 /* PhotoVC.swift in Sources */,
 				EC87B3BC1AB3474B00FBE811 /* AppDelegate.swift in Sources */,
 			);
