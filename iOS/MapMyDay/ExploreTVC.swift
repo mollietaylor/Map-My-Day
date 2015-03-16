@@ -26,6 +26,7 @@ class ExploreTVC: UITableViewController {
         super.viewWillAppear(true)
         
         refreshDays()
+        println("viewWillAppear")
         
     }
     

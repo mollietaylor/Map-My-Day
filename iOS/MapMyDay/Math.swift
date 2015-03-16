@@ -8,7 +8,7 @@
 
 import Foundation
 
-let isMetric = true
+let isMetric = false
 let metersInKM:Float = 1000
 let metersInMile:Float = 1609.334
 
@@ -24,7 +24,9 @@ func stringifyDistance(meters: Float) -> String {
         unitName = "mi"
         unitDivider = metersInMile
     }
-    return "\(meters / unitDivider) \(unitName)"
+    
+    let distance = round((meters / unitDivider) * 10) / 10
+    return "\(distance) \(unitName)"
     
 }
 

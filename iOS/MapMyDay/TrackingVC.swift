@@ -48,11 +48,13 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     var endTime:NSDate = NSDate()
     var manager:CLLocationManager!
     var trackedLocations = [CLLocation]()
+    var distanceLocations = [CLLocation]()
     var currentTrackPoints = [[String:AnyObject]]()
     var currentTrack = [String:AnyObject]()
     var tracks = [[String:AnyObject]]()
     var timer = NSTimer()
     var isRunning = false
+    var hasStarted = false
     
     // FIXME: if we add currentMode or a default mode to NSUserDefaults or Parse, currentModeColor needs to be changed to active mode before drawing begins
     var currentModeColor = UIColor(hue: 0.12, saturation: 1, brightness: 1, alpha: 1)
@@ -78,6 +80,13 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         collectionView.delegate = self
         collectionView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        hasStarted = false
+    
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -159,6 +168,22 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
+        for newLocation in locations {
+            
+            if newLocation.horizontalAccuracy < 20 {
+                
+                if distanceLocations.count > 0 {
+                    
+                    distance += Float(newLocation.distanceFromLocation(distanceLocations.last))
+                    
+                }
+                
+                distanceLocations.append(newLocation as CLLocation)
+                
+            }
+            
+        }
+        
         trackedLocations.append(locations[0] as CLLocation)
         
         let spanX = 0.007
@@ -192,7 +217,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
             
         }
         
-        
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -212,6 +236,8 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     @IBAction func stopTracking(sender: AnyObject) {
         
+        hasStarted = false
+        
         // add currentTrack to tracks
         currentTrack["track"] = currentTrackPoints
         currentTrackPoints = [[:]]
@@ -230,6 +256,13 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         currentDay.saveInBackground()
         
         // TODO: reset tracks, map, etc.
+        trackedLocations.removeAll()
+        distanceLocations.removeAll()
+        seconds = 0
+        distance = 0
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
         
         // on segue, so ViewDayVC will know what to display
         DaysData.mainData().selectedDay = currentDay
@@ -237,13 +270,19 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     }
     
     @IBAction func startTracking(sender: AnyObject) {
-
-        // these should only reset the first time the start button is pressed
-        startTime = NSDate()
-        seconds = 0
-        distance = 0
-        trackedLocations = []
-        timer = NSTimer(timeInterval: 1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
+        
+        // only run this the first time the start button is pressed
+        if !hasStarted {
+            
+            startTime = NSDate()
+            seconds = 0
+            distance = 0
+            trackedLocations = []
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
+            
+            hasStarted = true
+        }
+        
         isRunning = isRunning == false ? true : false
         if startButton.titleLabel?.text == "Start" {
             // start/resume
