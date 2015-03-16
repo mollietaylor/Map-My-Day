@@ -1,5 +1,5 @@
 //
-//  EditDayVC.swift
+//  AddStatVC.swift
 //  MapMyDay
 //
 //  Created by Mollie on 3/15/15.
@@ -8,12 +8,15 @@
 
 import UIKit
 
-class EditDayVC: UIViewController {
+class AddStatVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBarHidden = true
+        title = "Add Stat"
+        
+        navigationController?.navigationBarHidden = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "saveStat")
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +24,15 @@ class EditDayVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func saveStat() {
+        
+        // save data
+        
+        // dismiss VC
+        navigationController?.popViewControllerAnimated(true)
+        
     }
     
 

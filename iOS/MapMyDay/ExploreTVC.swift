@@ -67,7 +67,7 @@ class ExploreTVC: UITableViewController {
         
         DaysData.mainData().selectedDay = DaysData.mainData().days[indexPath.row]
         
-        let editVC = storyboard?.instantiateViewControllerWithIdentifier("editDayVC") as EditDayVC
+        let editVC = storyboard?.instantiateViewControllerWithIdentifier("editDayVC") as ViewDayVC
         
         navigationController?.pushViewController(editVC, animated: true)
         

@@ -14,13 +14,19 @@ class DayCell: UITableViewCell {
         
         didSet {
             
-            println(dayInfo)
+            dayInfo?["user"].fetchIfNeededInBackgroundWithBlock({ (object, error) -> Void in
+                let user = object as PFUser
+                self.textLabel?.text = user.username
+            })
             
-            textLabel?.text = dayInfo?["user"].objectId // FIXME: this should actually return username not User
-            let startTime = dayInfo?["startTime"] as? String
-            println(startTime)
-            let endTime = dayInfo?["endTime"] as? String
-            detailTextLabel?.text = "\(startTime) - \(endTime)" // or just date portion of startTime
+            // format date
+            let dateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "EEEE, MMMM d, YYYY"
+            dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+            
+            if let startTime = dayInfo?["startTime"] as? NSDate {
+                self.detailTextLabel?.text = dateFormatter.stringFromDate(startTime)
+            }
             
         }
         

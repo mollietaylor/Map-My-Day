@@ -22,6 +22,7 @@ class DaysData: NSObject {
     func refreshDays(completion: () -> ()) {
         
         var daysQuery = PFQuery(className: "Day")
+        daysQuery.orderByDescending("createdAt")
         
         daysQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
@@ -41,6 +42,7 @@ class DaysData: NSObject {
         
         var daysQuery = PFQuery(className: "Day")
         daysQuery.whereKey("user", equalTo: PFUser.currentUser())
+        daysQuery.orderByDescending("createdAt")
         
         daysQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             

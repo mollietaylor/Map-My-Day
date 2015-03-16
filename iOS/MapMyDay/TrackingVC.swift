@@ -14,6 +14,23 @@ import CoreLocation
 var photos = [String]()
 var text = [String]()
 
+let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
+let modesColors = [UIColor(hue: 0, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.06, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.12, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.18, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.24, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.30, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.36, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.42, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.48, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.54, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.60, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.66, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.72, saturation: 1, brightness: 1, alpha: 1),
+    UIColor(hue: 0.78, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.84, saturation: 1, brightness: 1, alpha: 1)]
+
 class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var currentModeImage: UIImageView!
@@ -37,22 +54,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     var timer = NSTimer()
     var isRunning = false
     
-    let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
-    let modesColors = [UIColor(hue: 0, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.06, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.12, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.18, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.24, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.30, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.36, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.42, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.48, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.54, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.60, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.66, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.72, saturation: 1, brightness: 1, alpha: 1),
-        UIColor(hue: 0.78, saturation: 1, brightness: 0.4, alpha: 1),
-        UIColor(hue: 0.84, saturation: 1, brightness: 1, alpha: 1)]
     // FIXME: if we add currentMode or a default mode to NSUserDefaults or Parse, currentModeColor needs to be changed to active mode before drawing begins
     var currentModeColor = UIColor(hue: 0.12, saturation: 1, brightness: 1, alpha: 1)
     var currentMode = "car"
@@ -229,6 +230,9 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         currentDay.saveInBackground()
         
         // TODO: reset tracks, map, etc.
+        
+        // on segue, so ViewDayVC will know what to display
+        DaysData.mainData().selectedDay = currentDay
         
     }
     
