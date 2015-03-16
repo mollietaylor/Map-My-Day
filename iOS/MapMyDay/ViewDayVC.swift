@@ -36,8 +36,70 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
             
         } else { tableViewFooter.hidden = true }
         
-        println(currentDay["tracks"])
+        // MARK: add pins
         
+        println(currentDay["photos"])
+        println(currentDay["text"])
+        let photos = currentDay["photos"] as [String]
+        let texts = currentDay["text"] as [String]
+        
+        // get photos and texts from parse
+        
+        for photo in photos {
+            
+            let photoQuery = PFQuery(className: "Image")
+            photoQuery.getObjectInBackgroundWithId(photo, block: { (object, error) -> Void in
+            
+                println(object)
+                
+                if let location = object["location"] as? [String:AnyObject] {
+                    if let lat = location["latitude"] as? Double {
+                        if let lon = location["longitude"] as? Double {
+                            
+                            let location = CLLocationCoordinate2DMake(lat, lon)
+                            let annotation = MKPointAnnotation()
+                            annotation.title = "Photo"
+                            annotation.coordinate = location
+                            
+                            self.mapView.addAnnotation(annotation)
+                            
+                        }
+                    }
+                }
+            
+            })
+            
+        }
+
+        for text in texts {
+            
+            let textQuery = PFQuery(className: "Text")
+            textQuery.getObjectInBackgroundWithId(text, block: { (object, error) -> Void in
+                
+                println(object)
+                
+                if let location = object["location"] as? [String:AnyObject] {
+                    if let lat = location["latitude"] as? Double {
+                        if let lon = location["longitude"] as? Double {
+                            
+                            let location = CLLocationCoordinate2DMake(lat, lon)
+                            let annotation = MKPointAnnotation()
+                            annotation.title = object["title"] as String
+                            annotation.subtitle = object["detail"] as String
+                            annotation.coordinate = location
+                            
+                            self.mapView.addAnnotation(annotation)
+                            
+                        }
+                    }
+                }
+                
+            })
+            
+        }
+        
+        // maybe this shouldn't be in viewWillAppear, but instead reload map or something
+        // MARK: draw tracks
         let tracks = currentDay["tracks"] as [[String:AnyObject]]
         
         for track in tracks {
@@ -99,6 +161,14 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
         renderer.strokeColor = overlay.color
         renderer.lineWidth = 4
         return renderer
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        var pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        pinView.canShowCallout = true
+        
+        return pinView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

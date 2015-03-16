@@ -551,11 +551,11 @@
             </objects>
             <point key="canvasLocation" x="1013" y="365"/>
         </scene>
-        <!--Days-->
+        <!--My Days-->
         <scene sceneID="uCz-OE-cHQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="McM-qD-TH5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Days" id="AH1-U3-UX7"/>
+                    <tabBarItem key="tabBarItem" title="My Days" id="AH1-U3-UX7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xqc-do-RaG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
