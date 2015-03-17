@@ -10,6 +10,9 @@ import UIKit
 
 class AddStatVC: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var numberTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,15 +23,26 @@ class AddStatVC: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // minimize keyboard on tap outside
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        view.endEditing(true)
     }
     
     func saveStat() {
         
         // save data
+//        DaysData.mainData().selectedDay["stats"].append()
+        var currentDay = DaysData.mainData().selectedDay!
+        var stats = currentDay["stats"] as [String:AnyObject]
+        stats.updateValue(numberTextField.text, forKey: nameTextField.text)
+        // FIXME: needs to set the value of stats for the key "stats"
+        currentDay.setValue(stats, forKey: "stats")
+        currentDay.saveInBackgroundWithBlock { (success, error) -> Void in
+            
+            
+            
+        }
         
         // dismiss VC
         navigationController?.popViewControllerAnimated(true)

@@ -80,7 +80,8 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
             "time":dateformatterTime(location.timestamp)]
         newImage["time"] = NSDate()
         
-        let image = resizeImage(imageView.image!, withSize: CGSizeMake(540.0, 540.0))
+        let width = 540 * imageView.image!.size.width / imageView.image!.size.height
+        let image = resizeImage(imageView.image!, withSize: CGSizeMake(width, 540.0))
         
         // turn UIImage into PFFile
         let imageFile = PFFile(name: "image.png", data: UIImagePNGRepresentation(image))

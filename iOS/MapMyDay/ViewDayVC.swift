@@ -15,10 +15,13 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewFooter: UIView!
     
+    var stats = [String:AnyObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
+        tableView.dataSource = self
         mapView.delegate = self
         
     }
@@ -38,10 +41,10 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
         
         // MARK: add pins
         
-        println(currentDay["photos"])
-        println(currentDay["text"])
         let photos = currentDay["photos"] as [String]
         let texts = currentDay["text"] as [String]
+        stats = currentDay["stats"] as [String:AnyObject]
+        tableView.reloadData()
         
         // get photos and texts from parse
         
@@ -49,8 +52,6 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
             
             let photoQuery = PFQuery(className: "Image")
             photoQuery.getObjectInBackgroundWithId(photo, block: { (object, error) -> Void in
-            
-                println(object)
                 
                 if let location = object["location"] as? [String:AnyObject] {
                     if let lat = location["latitude"] as? Double {
@@ -75,8 +76,6 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
             
             let textQuery = PFQuery(className: "Text")
             textQuery.getObjectInBackgroundWithId(text, block: { (object, error) -> Void in
-                
-                println(object)
                 
                 if let location = object["location"] as? [String:AnyObject] {
                     if let lat = location["latitude"] as? Double {
@@ -171,16 +170,29 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
         return pinView
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return stats.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        
+        let statsKeys = stats.keys.array
+        
+        let statsValues = stats.values.array
+        
+        cell.textLabel?.text = statsKeys[indexPath.row]
+        
+        if statsKeys[indexPath.row] == "Time" {
+            let seconds = statsValues[indexPath.row] as Int
+            cell.detailTextLabel?.text = stringifySecondCount(seconds, false)
+        } else if statsKeys[indexPath.row] == "Distance" {
+            let distance = statsValues[indexPath.row] as Float
+            cell.detailTextLabel?.text = stringifyDistance(distance)
+        } else {
+            cell.detailTextLabel?.text = statsValues[indexPath.row].description
+        }
         
         return cell
     }

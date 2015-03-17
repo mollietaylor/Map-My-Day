@@ -186,6 +186,8 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         trackedLocations.append(locations[0] as CLLocation)
         
+        var userLocation = locations[0] as CLLocation
+        
         let spanX = 0.007
         let spanY = 0.007
         var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
@@ -234,87 +236,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
     }
     
-    @IBAction func stopTracking(sender: AnyObject) {
-        
-        hasStarted = false
-        
-        // add currentTrack to tracks
-        currentTrack["track"] = currentTrackPoints
-        currentTrackPoints = [[:]]
-        tracks.append(currentTrack)
-        
-        // save data here, or ideally save while running
-        
-        var currentDay = PFObject(className: "Day")
-        currentDay["user"] = PFUser.currentUser()
-        currentDay["startTime"] = startTime
-        currentDay["endTime"] = NSDate()
-        currentDay["tracks"] = tracks
-        currentDay["photos"] = photos
-        currentDay["text"] = text
-        
-        currentDay.saveInBackground()
-        
-        // TODO: reset tracks, map, etc.
-        trackedLocations.removeAll()
-        distanceLocations.removeAll()
-        seconds = 0
-        distance = 0
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        
-        
-        // on segue, so ViewDayVC will know what to display
-        DaysData.mainData().selectedDay = currentDay
-        
-    }
-    
-    @IBAction func startTracking(sender: AnyObject) {
-        
-        // only run this the first time the start button is pressed
-        if !hasStarted {
-            
-            startTime = NSDate()
-            seconds = 0
-            distance = 0
-            trackedLocations = []
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
-            
-            hasStarted = true
-        }
-        
-        isRunning = isRunning == false ? true : false
-        if startButton.titleLabel?.text == "Start" {
-            // start/resume
-            startButton.setTitle("Pause", forState: .Normal)
-            // reset currentTrack
-            println(currentMode)
-            currentTrack = ["mode": currentMode,
-                "track": [[:]]]
-            
-        } else {
-            // pause
-            startButton.setTitle("Start", forState: UIControlState.Normal)
-            // add currentTrack to tracks
-            currentTrack["track"] = currentTrackPoints
-            currentTrackPoints = [[:]]
-            tracks.append(currentTrack)
-        }
-        
-        stopButton.hidden = false
-        
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+    // MARK: Add media
     @IBAction func takePhoto(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Media", bundle: nil)
@@ -342,6 +264,80 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         } // TODO: what should it do if location tracking isn't on?
         
         self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    
+    // MARK: Start & Stop
+    @IBAction func stopTracking(sender: AnyObject) {
+        
+        hasStarted = false
+        
+        // add currentTrack to tracks
+        currentTrack["track"] = currentTrackPoints
+        currentTrackPoints = [[:]]
+        tracks.append(currentTrack)
+        
+        // save data here, or ideally save while running
+        
+        var currentDay = PFObject(className: "Day")
+        currentDay["user"] = PFUser.currentUser()
+        currentDay["startTime"] = startTime
+        currentDay["endTime"] = NSDate()
+        currentDay["tracks"] = tracks
+        currentDay["photos"] = photos
+        currentDay["text"] = text
+        currentDay["stats"] = ["Distance": distance, "Time": seconds]
+        
+        currentDay.saveInBackground()
+        
+        // TODO: reset tracks, map, etc.
+        trackedLocations.removeAll()
+        distanceLocations.removeAll()
+        seconds = 0
+        distance = 0
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        
+        
+        // on segue, so ViewDayVC will know what to display
+        DaysData.mainData().selectedDay = currentDay
+        
+    }
+    
+    @IBAction func startTracking(sender: AnyObject) {
+        
+        // only run this the first time the start button is pressed
+        if !hasStarted {
+            
+            startTime = NSDate()
+            seconds = 0
+            distance = 0
+            trackedLocations = []
+            
+            hasStarted = true
+        }
+        
+        isRunning = isRunning == false ? true : false
+        if startButton.titleLabel?.text == "Start" {
+            // start/resume
+            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
+            startButton.setTitle("Pause", forState: .Normal)
+            // reset currentTrack
+            println(currentMode)
+            currentTrack = ["mode": currentMode,
+                "track": [[:]]]
+            
+        } else {
+            // pause
+            timer.invalidate()
+            startButton.setTitle("Start", forState: UIControlState.Normal)
+            // add currentTrack to tracks
+            currentTrack["track"] = currentTrackPoints
+            currentTrackPoints = [[:]]
+            tracks.append(currentTrack)
+        }
+        
+        stopButton.hidden = false
         
     }
 
