@@ -78,7 +78,6 @@ class TextVC: UIViewController {
         newText["title"] = itemTitle.text
         newText["detail"] = itemDetail.text
         
-        newText.saveInBackground()
         newText.saveInBackgroundWithBlock { (success, error) -> Void in
             
             text.append(newText.objectId)

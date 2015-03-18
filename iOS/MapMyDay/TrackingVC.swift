@@ -13,6 +13,7 @@ import CoreLocation
 // TODO: move these and possibly others to Data.swift
 var photos = [String]()
 var text = [String]()
+var venues = [String]()
 var manager:CLLocationManager!
 
 let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
@@ -107,6 +108,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 44, 44))
         imageView.image = UIImage(named: modesCollection[indexPath.row])
+        imageView.backgroundColor = modesColors[indexPath.row]
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         cell.addSubview(imageView)
@@ -269,6 +271,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         currentDay["tracks"] = tracks
         currentDay["photos"] = photos
         currentDay["text"] = text
+        currentDay["venues"] = venues
         currentDay["stats"] = ["Distance": distance, "Time": seconds]
         
         currentDay.saveInBackground()

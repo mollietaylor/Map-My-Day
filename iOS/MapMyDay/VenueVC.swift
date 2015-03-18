@@ -19,6 +19,7 @@ class VenueVC: UIViewController {
     @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var urlButton: UIButton!
     @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var foursquareButton: UIButton!
     @IBOutlet weak var slideView: UIView!
     
@@ -141,6 +142,7 @@ class VenueVC: UIViewController {
         
     }
     
+    
     func keyboardWillShow(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
@@ -149,6 +151,41 @@ class VenueVC: UIViewController {
         }
     }
     
+    @IBAction func addVenueToMap(sender: AnyObject) {
+        
+        let location = manager.location
+        
+        var category = ""
+        
+        if let categories = venue["categories"] as? [[String:AnyObject]] {
+            if !categories.isEmpty {
+                category = categories[0]["name"] as String
+            }
+        }
+        
+        var newVenue = PFObject(className: "Venue")
+        newVenue["user"] = PFUser.currentUser()
+        newVenue["location"] = ["latitude":location.coordinate.latitude,
+            "longitude":location.coordinate.longitude,
+            "altitude":location.altitude,
+            "horizontalAccuracy":location.horizontalAccuracy,
+            "verticalAccuracy":location.verticalAccuracy,
+            "time":dateformatterTime(location.timestamp)]
+        newVenue["time"] = NSDate()
+        newVenue["name"] = venue["name"]
+        newVenue["category"] = category
+        newVenue["foursquareId"] = venue["id"]
+        newVenue["comment"] = commentTextField.text
+        
+        newVenue.saveInBackgroundWithBlock { (success, error) -> Void in
+            
+            venues.append(newVenue.objectId)
+            
+        }
+        
+        navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
     
     func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0

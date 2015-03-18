@@ -87,7 +87,6 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         let imageFile = PFFile(name: "image.png", data: UIImagePNGRepresentation(image))
         newImage["image"] = imageFile
 
-        newImage.saveInBackground()
         newImage.saveInBackgroundWithBlock { (success, error) -> Void in
             photos.append(newImage.objectId)
         }

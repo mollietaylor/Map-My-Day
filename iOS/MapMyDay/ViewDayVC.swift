@@ -45,6 +45,7 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
         
         let photos = currentDay["photos"] as [String]
         let texts = currentDay["text"] as [String]
+        let venues = currentDay["venues"] as [String]
         stats = currentDay["stats"] as [String:AnyObject]
         tableView.reloadData()
         
@@ -87,6 +88,31 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
                             let annotation = MKPointAnnotation()
                             annotation.title = object["title"] as String
                             annotation.subtitle = object["detail"] as String
+                            annotation.coordinate = location
+                            
+                            self.mapView.addAnnotation(annotation)
+                            
+                        }
+                    }
+                }
+                
+            })
+            
+        }
+        
+        for venue in venues {
+            
+            let venueQuery = PFQuery(className: "Venue")
+            venueQuery.getObjectInBackgroundWithId(venue, block: { (object, error) -> Void in
+                
+                if let location = object["location"] as? [String:AnyObject] {
+                    if let lat = location["latitude"] as? Double {
+                        if let lon = location["longitude"] as? Double {
+                            
+                            let location = CLLocationCoordinate2DMake(lat, lon)
+                            let annotation = MKPointAnnotation()
+                            annotation.title = object["name"] as String
+                            annotation.subtitle = object["comment"] as String
                             annotation.coordinate = location
                             
                             self.mapView.addAnnotation(annotation)

@@ -168,6 +168,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="addVenueToMap:" destination="0yI-xi-9SJ" eventType="touchUpInside" id="0gE-ri-cBd"/>
                                     <action selector="saveItem:" destination="6zM-82-aXs" eventType="touchUpInside" id="vFZ-KT-aH2"/>
                                 </connections>
                             </button>
@@ -199,7 +200,7 @@
                                     <constraint firstAttribute="height" constant="44" id="uTL-xU-wvW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Hours Listed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Mux-Jd-Y2v">
                                 <rect key="frame" x="45" y="159" width="539" height="21"/>
@@ -344,6 +345,7 @@
                     <connections>
                         <outlet property="addressButton" destination="1vO-Ox-8kF" id="xYn-hl-PRi"/>
                         <outlet property="categoryLabel" destination="BTc-ye-IaC" id="pak-Bv-JWx"/>
+                        <outlet property="commentTextField" destination="IUS-2l-KCL" id="MdI-on-MEq"/>
                         <outlet property="foursquareButton" destination="tTp-bN-UL8" id="Ue3-qw-GrB"/>
                         <outlet property="hoursLabel" destination="Mux-Jd-Y2v" id="CAs-Yz-IBj"/>
                         <outlet property="urlButton" destination="N53-J3-dhI" id="k88-ab-eDn"/>
