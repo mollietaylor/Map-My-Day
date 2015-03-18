@@ -81,6 +81,7 @@ class TextVC: UIViewController {
         newText.saveInBackgroundWithBlock { (success, error) -> Void in
             
             text.append(newText.objectId)
+            media.append(["type": "text", "objectId": newText.objectId])
             
         }
         

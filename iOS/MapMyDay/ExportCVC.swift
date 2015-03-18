@@ -54,7 +54,7 @@ class ExportCVC: UICollectionViewController, UICollectionViewDelegate, UICollect
         
         println(exportImages[0].size)
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 44, 44))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 300, 300))
         imageView.image = exportImages[indexPath.row]
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         

@@ -14,6 +14,7 @@ import CoreLocation
 var photos = [String]()
 var text = [String]()
 var venues = [String]()
+var media = [[String:String]]()
 var manager:CLLocationManager!
 
 let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
@@ -272,6 +273,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         currentDay["photos"] = photos
         currentDay["text"] = text
         currentDay["venues"] = venues
+        currentDay["media"] = media
         currentDay["stats"] = ["Distance": distance, "Time": seconds]
         
         currentDay.saveInBackground()

@@ -89,6 +89,7 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 
         newImage.saveInBackgroundWithBlock { (success, error) -> Void in
             photos.append(newImage.objectId)
+            media.append(["type": "photo", "objectId": newImage.objectId])
         }
         
         dismissViewControllerAnimated(true, completion: nil)

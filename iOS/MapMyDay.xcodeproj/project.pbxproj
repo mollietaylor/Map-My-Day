@@ -12,6 +12,8 @@
 		EC05972A1AB9CA0C007AC46A /* VenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0597291AB9CA0C007AC46A /* VenueVC.swift */; };
 		EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */; };
 		EC13A7D21AA4D39E00B9AD6F /* Map_My_DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7D11AA4D39E00B9AD6F /* Map_My_DayTests.swift */; };
+		EC5514311AB9FCA5001A538F /* SaveImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5514301AB9FCA5001A538F /* SaveImageVC.swift */; };
+		EC5514331ABA0921001A538F /* MapDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5514321ABA0921001A538F /* MapDay.swift */; };
 		EC87B3B71AB3474B00FBE811 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF647C01AA68E13000E9CCF /* Day.swift */; };
 		EC87B3B81AB3474B00FBE811 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DD1AA4DD1000B9AD6F /* Math.swift */; };
 		EC87B3B91AB3474B00FBE811 /* TrackingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7DB1AA4D40D00B9AD6F /* TrackingVC.swift */; };
@@ -72,6 +74,8 @@
 		EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		EC383EC91AB343D800396DA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Media.storyboard; sourceTree = "<group>"; };
 		EC46EC0D1AB3441F000291A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		EC5514301AB9FCA5001A538F /* SaveImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveImageVC.swift; sourceTree = "<group>"; };
+		EC5514321ABA0921001A538F /* MapDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDay.swift; sourceTree = "<group>"; };
 		EC88572F1AB89FF600D36A3A /* ExportCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCVC.swift; sourceTree = "<group>"; };
 		EC9770191AB1C798001920AA /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		EC97701B1AB1C820001920AA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				ECE0EA051AB5DE9C004CD571 /* DayCell.swift */,
 				ECE0EA011AB5DA8B004CD571 /* MyDaysTVC.swift */,
 				ECE0E9FF1AB5DA4A004CD571 /* ExploreTVC.swift */,
+				EC5514301AB9FCA5001A538F /* SaveImageVC.swift */,
 				EC88572F1AB89FF600D36A3A /* ExportCVC.swift */,
 				EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */,
 				ECE0E9FC1AB5DA14004CD571 /* Login */,
@@ -236,6 +241,7 @@
 				ECE0E9FA1AB5D8DD004CD571 /* DaysData.swift */,
 				EC13A7DD1AA4DD1000B9AD6F /* Math.swift */,
 				EC0597251AB9B7B4007AC46A /* FourSquareRequest.swift */,
+				EC5514321ABA0921001A538F /* MapDay.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -389,10 +395,12 @@
 				ECE0E9F81AB5BC1C004CD571 /* TextVC.swift in Sources */,
 				EC87B3BB1AB3474B00FBE811 /* PhotoVC.swift in Sources */,
 				ECE0E9FB1AB5D8DD004CD571 /* DaysData.swift in Sources */,
+				EC5514311AB9FCA5001A538F /* SaveImageVC.swift in Sources */,
 				EC87B3BC1AB3474B00FBE811 /* AppDelegate.swift in Sources */,
 				ECCAECB41AB617F5002DF918 /* AddStatVC.swift in Sources */,
 				ECF0708C1AB65BC900AFC8B8 /* CustomPolyline.swift in Sources */,
 				ECE0EA041AB5DCE3004CD571 /* ViewDayVC.swift in Sources */,
+				EC5514331ABA0921001A538F /* MapDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

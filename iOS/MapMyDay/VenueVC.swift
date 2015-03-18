@@ -180,6 +180,7 @@ class VenueVC: UIViewController {
         newVenue.saveInBackgroundWithBlock { (success, error) -> Void in
             
             venues.append(newVenue.objectId)
+            media.append(["type": "venue", "objectId": newVenue.objectId])
             
         }
         
