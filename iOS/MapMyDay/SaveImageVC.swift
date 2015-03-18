@@ -14,10 +14,16 @@ var exportImages: [UIImage] = [UIImage]()
 class SaveImageVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     
+    var addedViews = [UIView]()
     var stats = [String:AnyObject]()
     var currentDay:PFObject!
     var index = 0
+    
+    var media = [[String:String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +32,11 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
         media = currentDay["media"] as [[String:String]]
         stats = currentDay["stats"] as [String:AnyObject]
         
-        // get media from parse
-        
         media.insert(["type": "map"], atIndex: 0)
         media.append(["type": "stats"])
         println(media)
         
         setView()
-        
-    }
-    
-    func mapViewDidFinishRenderingMap(mapView: MKMapView!, fullyRendered: Bool) {
-        
-        // TODO: move this code somewhere that it doesn't run every time ViewDay is run, at the very least, it shouldn't run for someone else's day
-        
         
     }
 
@@ -53,12 +50,17 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
         
         exportImages.append(image)
         
-        if index < media.count { // TODO: make sure this is right
+        if index < media.count - 1 {
+            
+            println(media[index])
             index++
             setView()
-        } else {
-            // if that was the last index, advance to exportCVC
             
+        } else {
+            
+            // if that was the last index, advance to exportCVC
+            performSegueWithIdentifier("showExportCVC", sender: self)
+
         }
         
     }
@@ -66,9 +68,13 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
     func setView() {
         
         // clear view
-        for subview in mainView.subviews {
-            subview.removeFromSuperview()
+        for view in addedViews {
+            view.removeFromSuperview()
         }
+        addedViews.removeAll()
+        titleLabel.hidden = true
+        categoryLabel.hidden = true
+        commentLabel.hidden = true
         
         let item = media[index] as [String:String]
         
@@ -81,9 +87,55 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             var mapView = MKMapView(frame: CGRectMake(0, 0, mainView.frame.width, height))
             mainView.addSubview(mapView)
             mapView.delegate = self
+            addedViews.append(mapView)
             
             // map stuff
             mapDay(mapView, currentDay)
+            
+        } else if item["type"] == "venue" {
+            // TODO: add map view
+            
+            titleLabel.hidden = false
+            categoryLabel.hidden = false
+            commentLabel.hidden = false
+            
+            let venueQuery = PFQuery(className: "Venue")
+            venueQuery.getObjectInBackgroundWithId(item["objectId"], block: { (object, error) -> Void in
+                
+                self.titleLabel.text = object["name"] as? String
+                self.categoryLabel.text = object["category"] as? String
+                if let venueComment = object["comment"] as? String {
+                    self.commentLabel.text = venueComment
+                    self.commentLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Quotes")!)
+                } else {
+                    self.commentLabel.text = ""
+                }
+                
+            })
+            
+        } else if item["type"] == "text" {
+            // TODO: add map view
+            
+            titleLabel.hidden = false
+            commentLabel.hidden = false
+            
+            
+            let textQuery = PFQuery(className: "Text")
+            textQuery.getObjectInBackgroundWithId(item["objectId"], block: { (object, error) -> Void in
+                
+                if let title = object["title"] as? String {
+                    self.titleLabel.text = title
+                } else {
+                    self.titleLabel.text = ""
+                }
+                if let detail = object["detail"] as? String {
+                    self.commentLabel.text = detail
+                    self.commentLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Quotes")!)
+                } else {
+                    self.commentLabel.text = ""
+                }
+                
+            })
             
         }
         
