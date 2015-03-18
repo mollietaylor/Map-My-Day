@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 
+var exportImages: [UIImage] = [UIImage]()
+
 class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -118,18 +120,21 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
                 // zoom to overlay
                 
                 // FIXME:
-                let spanX = 0.007
-                let spanY = 0.007
-                let point = trackPoints[0] as [String:AnyObject]
-                if let lat = point["latitude"] as? CLLocationDegrees {
-                    if let lon = point["longitude"] as? CLLocationDegrees {
-                        let newRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(lat, lon), MKCoordinateSpanMake(spanX, spanY))
-                        mapView.setRegion(newRegion, animated: false)
-                    }
-                }
+                mapView.visibleMapRect = mapView.mapRectThatFits(line.boundingMapRect)
+                mapView.mapRectThatFits(line.boundingMapRect, edgePadding: UIEdgeInsetsMake(200, 50, 200, 50))
+                
             }
             
         }
+        
+        // TODO: move this code somewhere that it doesn't run every time ViewDay is run, at the very least, it shouldn't run for someone else's day
+        
+        UIGraphicsBeginImageContext(mapView.frame.size)
+        mapView.layer.renderInContext(UIGraphicsGetCurrentContext())
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        exportImages.append(image)
 
     }
     

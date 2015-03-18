@@ -10,8 +10,6 @@ import UIKit
 
 class TextVC: UIViewController {
     
-    var location = CLLocation()
-    
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemDetail: UITextView!
     
@@ -65,6 +63,8 @@ class TextVC: UIViewController {
     }
     
     @IBAction func saveItem(sender: AnyObject) {
+        
+        let location = manager.location
         
         var newText = PFObject(className: "Text")
         newText["user"] = PFUser.currentUser()

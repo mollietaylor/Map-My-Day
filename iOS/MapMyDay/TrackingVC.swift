@@ -13,6 +13,7 @@ import CoreLocation
 // TODO: move these and possibly others to Data.swift
 var photos = [String]()
 var text = [String]()
+var manager:CLLocationManager!
 
 let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
 let modesColors = [UIColor(hue: 0, saturation: 1, brightness: 1, alpha: 1),
@@ -46,7 +47,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     var distance:Float = 0
     var startTime:NSDate = NSDate()
     var endTime:NSDate = NSDate()
-    var manager:CLLocationManager!
     var trackedLocations = [CLLocation]()
     var distanceLocations = [CLLocation]()
     var currentTrackPoints = [[String:AnyObject]]()
@@ -87,14 +87,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         hasStarted = false
     
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        timer.invalidate()
-        
-        // TODO: once data has been saved, erase tracks from map
     }
     
     func eachSecond() {
@@ -149,8 +141,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
         
     }
-    
-    // TODO: when you start, stop, or change modes (while running), tracks should begin and/or end
     
     @IBAction func changeMode(sender: AnyObject) {
         
@@ -240,14 +230,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     @IBAction func takePhoto(sender: AnyObject) {
         
         let storyboard = UIStoryboard(name: "Media", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("photoVC") as PhotoVC
-        
-        if let location = trackedLocations.last {
-            
-            vc.location = location
-            
-        } // TODO: what should it do if location tracking isn't on?
-        
+        let vc = storyboard.instantiateViewControllerWithIdentifier("photoVC") as PhotoVC        
         self.presentViewController(vc, animated: true, completion: nil)
         
     }
@@ -256,21 +239,21 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         let storyboard = UIStoryboard(name: "Media", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("textVC") as TextVC
-        
-        if let location = trackedLocations.last {
-            
-            vc.location = location
-            
-        } // TODO: what should it do if location tracking isn't on?
-        
         self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func addVenue(sender: AnyObject) {
+        
+        let storyboard = UIStoryboard(name: "Media", bundle: nil)
+        let navC = storyboard.instantiateViewControllerWithIdentifier("venuesNavC") as UINavigationController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("venuesTVC") as VenuesTVC
+        presentViewController(navC, animated: true, completion: nil)
         
     }
     
     // MARK: Start & Stop
     @IBAction func stopTracking(sender: AnyObject) {
-        
-        hasStarted = false
         
         // add currentTrack to tracks
         currentTrack["track"] = currentTrackPoints
@@ -290,13 +273,22 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         currentDay.saveInBackground()
         
-        // TODO: reset tracks, map, etc.
+        // reset tracks, map, etc.
+        timer.invalidate()
         trackedLocations.removeAll()
         distanceLocations.removeAll()
         seconds = 0
         distance = 0
+        isRunning = false
+        hasStarted = false
+        startButton.setTitle("Start", forState: UIControlState.Normal)
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
+        timeLabel.text = "Time"
+        distanceLabel.text = "Distance"
+        // whatever gets drawn in ViewDay isn't getting reset
+        tracks.removeAll()
+        // FIXME: can photos reset?
         
         
         // on segue, so ViewDayVC will know what to display
@@ -323,7 +315,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
             timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
             startButton.setTitle("Pause", forState: .Normal)
             // reset currentTrack
-            println(currentMode)
             currentTrack = ["mode": currentMode,
                 "track": [[:]]]
             

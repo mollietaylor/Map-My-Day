@@ -14,8 +14,6 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
     
     var imagePicker = UIImagePickerController()
     
-    var location = CLLocation()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +69,8 @@ class PhotoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
         
         var newImage = PFObject(className: "Image") // Media or Image
         newImage["user"] = PFUser.currentUser()
+        
+        let location = manager.location
         
         newImage["location"] = ["latitude":location.coordinate.latitude,
             "longitude":location.coordinate.longitude,

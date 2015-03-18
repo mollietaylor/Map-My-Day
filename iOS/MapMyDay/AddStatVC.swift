@@ -36,7 +36,6 @@ class AddStatVC: UIViewController {
         var currentDay = DaysData.mainData().selectedDay!
         var stats = currentDay["stats"] as [String:AnyObject]
         stats.updateValue(numberTextField.text, forKey: nameTextField.text)
-        // FIXME: needs to set the value of stats for the key "stats"
         currentDay.setValue(stats, forKey: "stats")
         currentDay.saveInBackgroundWithBlock { (success, error) -> Void in
             

@@ -67,7 +67,7 @@ func stringifySecondCount(seconds: Int, usingLongFormat: Bool) -> String {
     remainingSeconds -= minutes * 60
     let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
     
-    let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
+    let strSeconds = remainingSeconds > 9 ? String(remainingSeconds):"0" + String(remainingSeconds)
     
     if usingLongFormat {
         

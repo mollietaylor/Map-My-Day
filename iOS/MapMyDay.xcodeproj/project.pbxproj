@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0597261AB9B7B4007AC46A /* FourSquareRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0597251AB9B7B4007AC46A /* FourSquareRequest.swift */; };
+		EC0597281AB9BA2A007AC46A /* VenuesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0597271AB9BA2A007AC46A /* VenuesTVC.swift */; };
+		EC05972A1AB9CA0C007AC46A /* VenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0597291AB9CA0C007AC46A /* VenueVC.swift */; };
 		EC13A7C31AA4D39E00B9AD6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C21AA4D39E00B9AD6F /* Images.xcassets */; };
 		EC13A7D21AA4D39E00B9AD6F /* Map_My_DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC13A7D11AA4D39E00B9AD6F /* Map_My_DayTests.swift */; };
 		EC87B3B71AB3474B00FBE811 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF647C01AA68E13000E9CCF /* Day.swift */; };
@@ -20,6 +23,7 @@
 		EC87B3BF1AB34C8000FBE811 /* Media.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC383ECA1AB343D800396DA6 /* Media.storyboard */; };
 		EC87B3C01AB34C8000FBE811 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7C41AA4D39E00B9AD6F /* LaunchScreen.xib */; };
 		EC87B3C11AB34C9500FBE811 /* MapMyDay-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = EC97702E1AB1C92E001920AA /* MapMyDay-Bridging-Header.h */; };
+		EC8857301AB89FF600D36A3A /* ExportCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88572F1AB89FF600D36A3A /* ExportCVC.swift */; };
 		EC97701D1AB1C820001920AA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701B1AB1C820001920AA /* Bolts.framework */; };
 		EC97701E1AB1C820001920AA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701C1AB1C820001920AA /* Parse.framework */; };
 		EC9770261AB1C89F001920AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC97701F1AB1C89F001920AA /* AudioToolbox.framework */; };
@@ -51,6 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC0597251AB9B7B4007AC46A /* FourSquareRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourSquareRequest.swift; sourceTree = "<group>"; };
+		EC0597271AB9BA2A007AC46A /* VenuesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenuesTVC.swift; sourceTree = "<group>"; };
+		EC0597291AB9CA0C007AC46A /* VenueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueVC.swift; sourceTree = "<group>"; };
 		EC13A7B61AA4D39E00B9AD6F /* MapMyDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapMyDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC13A7BA1AA4D39E00B9AD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC13A7BB1AA4D39E00B9AD6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +72,7 @@
 		EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		EC383EC91AB343D800396DA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Media.storyboard; sourceTree = "<group>"; };
 		EC46EC0D1AB3441F000291A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		EC88572F1AB89FF600D36A3A /* ExportCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCVC.swift; sourceTree = "<group>"; };
 		EC9770191AB1C798001920AA /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		EC97701B1AB1C820001920AA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		EC97701C1AB1C820001920AA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -145,6 +153,7 @@
 				ECE0EA051AB5DE9C004CD571 /* DayCell.swift */,
 				ECE0EA011AB5DA8B004CD571 /* MyDaysTVC.swift */,
 				ECE0E9FF1AB5DA4A004CD571 /* ExploreTVC.swift */,
+				EC88572F1AB89FF600D36A3A /* ExportCVC.swift */,
 				EC13A7BF1AA4D39E00B9AD6F /* Main.storyboard */,
 				ECE0E9FC1AB5DA14004CD571 /* Login */,
 				ECE0E9F91AB5BC2D004CD571 /* Media */,
@@ -204,6 +213,8 @@
 			children = (
 				ECE987921AB339DF00EF4995 /* PhotoVC.swift */,
 				ECE0E9F71AB5BC1C004CD571 /* TextVC.swift */,
+				EC0597271AB9BA2A007AC46A /* VenuesTVC.swift */,
+				EC0597291AB9CA0C007AC46A /* VenueVC.swift */,
 				EC383ECA1AB343D800396DA6 /* Media.storyboard */,
 			);
 			name = Media;
@@ -224,6 +235,7 @@
 				ECF647C01AA68E13000E9CCF /* Day.swift */,
 				ECE0E9FA1AB5D8DD004CD571 /* DaysData.swift */,
 				EC13A7DD1AA4DD1000B9AD6F /* Math.swift */,
+				EC0597251AB9B7B4007AC46A /* FourSquareRequest.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -365,11 +377,15 @@
 				EC87B3C11AB34C9500FBE811 /* MapMyDay-Bridging-Header.h in Sources */,
 				ECE0EA001AB5DA4A004CD571 /* ExploreTVC.swift in Sources */,
 				EC87B3B71AB3474B00FBE811 /* Day.swift in Sources */,
+				EC0597281AB9BA2A007AC46A /* VenuesTVC.swift in Sources */,
 				EC87B3B81AB3474B00FBE811 /* Math.swift in Sources */,
 				ECE0EA061AB5DE9C004CD571 /* DayCell.swift in Sources */,
+				EC05972A1AB9CA0C007AC46A /* VenueVC.swift in Sources */,
 				EC87B3B91AB3474B00FBE811 /* TrackingVC.swift in Sources */,
 				ECE0EA021AB5DA8B004CD571 /* MyDaysTVC.swift in Sources */,
+				EC0597261AB9B7B4007AC46A /* FourSquareRequest.swift in Sources */,
 				EC87B3BA1AB3474B00FBE811 /* LoginVC.swift in Sources */,
+				EC8857301AB89FF600D36A3A /* ExportCVC.swift in Sources */,
 				ECE0E9F81AB5BC1C004CD571 /* TextVC.swift in Sources */,
 				EC87B3BB1AB3474B00FBE811 /* PhotoVC.swift in Sources */,
 				ECE0E9FB1AB5D8DD004CD571 /* DaysData.swift in Sources */,
