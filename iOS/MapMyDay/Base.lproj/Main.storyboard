@@ -277,6 +277,39 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2AX-ha-JZr">
                                 <rect key="frame" x="0.0" y="220" width="600" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="LhU-SN-VFD">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYn-xI-7fF">
+                                            <rect key="frame" x="16" y="11" width="48" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="BwC-69-P4t"/>
+                                                <constraint firstAttribute="height" constant="21" id="s6N-Ff-ZFE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TCY-ey-rle">
+                                            <rect key="frame" x="535" y="6" width="51" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="Bzs-my-2zo"/>
+                                                <constraint firstAttribute="width" constant="49" id="glp-T4-Aw2"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="switchPublic:" destination="x9p-0r-zB8" eventType="valueChanged" id="lWn-an-Rb1"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.65667259690000002" green="0.99167871480000003" blue="0.67885512110000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="wYn-xI-7fF" firstAttribute="leading" secondItem="LhU-SN-VFD" secondAttribute="leading" constant="16" id="C9Y-9I-ugs"/>
+                                        <constraint firstAttribute="centerY" secondItem="wYn-xI-7fF" secondAttribute="centerY" id="I8x-Jz-PhD"/>
+                                        <constraint firstAttribute="centerY" secondItem="TCY-ey-rle" secondAttribute="centerY" id="Or1-VV-m33"/>
+                                        <constraint firstAttribute="trailing" secondItem="TCY-ey-rle" secondAttribute="trailing" constant="16" id="thM-Hc-sjJ"/>
+                                    </constraints>
+                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="jhX-BT-XfH">
                                     <rect key="frame" x="0.0" y="66" width="600" height="104"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -367,8 +400,10 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="VcM-hc-oy5" id="uAb-vF-K2p"/>
+                        <outlet property="publicSwitch" destination="TCY-ey-rle" id="6Hu-yw-DX7"/>
                         <outlet property="tableView" destination="2AX-ha-JZr" id="3bY-AO-gw9"/>
                         <outlet property="tableViewFooter" destination="jhX-BT-XfH" id="Abe-HW-D6h"/>
+                        <outlet property="tableViewHeader" destination="LhU-SN-VFD" id="B9a-Iu-Mpn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRP-Xm-Zhy" userLabel="First Responder" sceneMemberID="firstResponder"/>

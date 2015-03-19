@@ -11,12 +11,23 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var goButton: UIButton!
     
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var usernameConstraint: NSLayoutConstraint!
+    
+    var loginMode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        goButton.hidden = true
+        usernameField.hidden = true
+        emailField.hidden = true
+        passwordField.hidden = true
         
         checkIfLoggedIn()
         
@@ -27,6 +38,7 @@ class LoginViewController: UIViewController {
             if let kbSize = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size {
                 
                 self.buttonBottomConstraint.constant = 20 + kbSize.height
+                self.imageConstraint.constant = 28 - kbSize.height
                 self.view.layoutIfNeeded()
                 
                 // or:
@@ -39,16 +51,45 @@ class LoginViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillHideNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
             
             self.buttonBottomConstraint.constant = 20
+            self.imageConstraint.constant = 28
             self.view.layoutIfNeeded()
             
         }
         
     }
     
+    // minimize keyboard on tap outside
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func loginPressed(sender: AnyObject) {
+        
+        loginMode = "login"
+        usernameField.hidden = false
+        usernameConstraint.constant = 8
+        passwordField.hidden = false
+        goButton.hidden = false
+        
+    }
+    
+    @IBAction func registerPressed(sender: AnyObject) {
+        
+        loginMode = "register"
+        usernameField.hidden = false
+        emailField.hidden = false
+        passwordField.hidden = false
+        goButton.hidden = false
+        
+    }
+    
     @IBAction func loginRegister(sender: AnyObject) {
         
-        var fieldValues: [String] = [usernameField.text,passwordField.text]
-        
+        var fieldValues: [String] = [usernameField.text, emailField.text, passwordField.text]
+        if loginMode == "login" {
+            fieldValues = [usernameField.text, passwordField.text]
+        }
+            
         if find(fieldValues, "") == nil {
             
             var userQuery = PFUser.query()
@@ -103,6 +144,7 @@ class LoginViewController: UIViewController {
         
         var user = PFUser()
         user.username = usernameField.text
+        user.email = emailField.text
         user.password = passwordField.text
         
         user.signUpInBackgroundWithBlock {
@@ -114,6 +156,7 @@ class LoginViewController: UIViewController {
                 self.checkIfLoggedIn()
                 
                 self.usernameField.text = ""
+                self.emailField.text = ""
                 self.passwordField.text = ""
                 
             } else {

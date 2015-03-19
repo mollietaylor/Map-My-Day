@@ -256,51 +256,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     }
     
     // MARK: Start & Stop
-    @IBAction func stopTracking(sender: AnyObject) {
-        
-        // add currentTrack to tracks
-        currentTrack["track"] = currentTrackPoints
-        currentTrackPoints = [[:]]
-        tracks.append(currentTrack)
-        
-        // save data here, or ideally save while running
-        
-        var currentDay = PFObject(className: "Day")
-        currentDay["user"] = PFUser.currentUser()
-        currentDay["startTime"] = startTime
-        currentDay["endTime"] = NSDate()
-        currentDay["tracks"] = tracks
-        currentDay["photos"] = photos
-        currentDay["text"] = text
-        currentDay["venues"] = venues
-        currentDay["media"] = media
-        currentDay["stats"] = ["Distance": distance, "Time": seconds]
-        
-        currentDay.saveInBackground()
-        
-        // reset tracks, map, etc.
-        timer.invalidate()
-        trackedLocations.removeAll()
-        distanceLocations.removeAll()
-        seconds = 0
-        distance = 0
-        isRunning = false
-        hasStarted = false
-        startButton.setTitle("Start", forState: UIControlState.Normal)
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        timeLabel.text = "Time"
-        distanceLabel.text = "Distance"
-        // whatever gets drawn in ViewDay isn't getting reset
-        tracks.removeAll()
-        // FIXME: can photos reset?
-        
-        
-        // on segue, so ViewDayVC will know what to display
-        DaysData.mainData().selectedDay = currentDay
-        
-    }
-    
     @IBAction func startTracking(sender: AnyObject) {
         
         // only run this the first time the start button is pressed
@@ -334,6 +289,52 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
         
         stopButton.hidden = false
+        
+    }
+    
+    @IBAction func stopTracking(sender: AnyObject) {
+        
+        // add currentTrack to tracks
+        currentTrack["track"] = currentTrackPoints
+        currentTrackPoints = [[:]]
+        tracks.append(currentTrack)
+        
+        // save data here, or ideally save while running
+        
+        var currentDay = PFObject(className: "Day")
+        currentDay["user"] = PFUser.currentUser()
+        currentDay["startTime"] = startTime
+        currentDay["endTime"] = NSDate()
+        currentDay["tracks"] = tracks
+        currentDay["photos"] = photos
+        currentDay["text"] = text
+        currentDay["venues"] = venues
+        currentDay["media"] = media
+        currentDay["stats"] = ["Distance": distance, "Time": seconds]
+        currentDay["public"] = false
+        
+        currentDay.saveInBackground()
+        
+        // reset tracks, map, etc.
+        timer.invalidate()
+        trackedLocations.removeAll()
+        distanceLocations.removeAll()
+        seconds = 0
+        distance = 0
+        isRunning = false
+        hasStarted = false
+        startButton.setTitle("Start", forState: UIControlState.Normal)
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        timeLabel.text = "Time"
+        distanceLabel.text = "Distance"
+        // whatever gets drawn in ViewDay isn't getting reset
+        tracks.removeAll()
+        // FIXME: can photos reset?
+        
+        
+        // on segue, so ViewDayVC will know what to display
+        DaysData.mainData().selectedDay = currentDay
         
     }
 

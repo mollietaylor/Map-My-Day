@@ -11,7 +11,7 @@ import MapKit
 
 var exportImages: [UIImage] = [UIImage]()
 
-class SaveImageVC: UIViewController, MKMapViewDelegate {
+class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,12 +23,19 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
     var stats = [String:AnyObject]()
     var currentDay:PFObject!
     var index = 0
-    var mapView = MKMapView()
-    
     var media = [[String:String]]()
+    
+    var mapView = MKMapView()
+    var tableView = UITableView()
+    
+    var tabBarHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        exportImages.removeAll()
+        
+        tabBarHeight = tabBarController!.tabBar.frame.height
         
         currentDay = DaysData.mainData().selectedDay!
         media = currentDay["media"] as [[String:String]]
@@ -85,7 +92,6 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
         if item["type"] == "map" {
             
             // display map view
-            let tabBarHeight = tabBarController!.tabBar.frame.height
             let height = view.frame.height - 60 - tabBarHeight
             mapView = MKMapView(frame: CGRectMake(0, 0, mainView.frame.width, height))
             mainView.addSubview(mapView)
@@ -103,7 +109,6 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             commentLabel.hidden = false
             
             // mini map
-            let tabBarHeight = tabBarController!.tabBar.frame.height
             let y = view.frame.height - 60 - tabBarHeight - 100 - 16
             let width = view.frame.width - 32
             mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
@@ -144,7 +149,6 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             commentLabel.hidden = false
             
             // mini map
-            let tabBarHeight = tabBarController!.tabBar.frame.height
             let y = view.frame.height - 60 - tabBarHeight - 100 - 16
             let width = view.frame.width - 32
             mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
@@ -183,7 +187,6 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
         } else if item["type"] == "photo" {
             
             // mini map
-            let tabBarHeight = tabBarController!.tabBar.frame.height
             let y = view.frame.height - 60 - tabBarHeight - 100 - 8
             let width = view.frame.width - 32
             mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
@@ -200,7 +203,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
                     
                     let image: UIImage = UIImage(data: imageData)!
                     var imageView = UIImageView(image: image)
-                    let height = self.view.frame.height - 60 - tabBarHeight - 100 - 24
+                    let height = self.view.frame.height - 60 - self.tabBarHeight - 100 - 24
                     let width = self.view.frame.width - 16
                     imageView.frame = CGRectMake(8, 8, width, height)
                     self.mainView.addSubview(imageView)
@@ -212,9 +215,43 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             
         } else if item["type"] == "stats" {
             
-            // TODO:
+            let height = view.frame.height - 60 - tabBarHeight - 20
+            tableView = UITableView(frame: CGRectMake(0, 20, view.frame.width, height))
+            tableView.delegate = self
+            tableView.dataSource = self
+            mainView.addSubview(tableView)
+            addedViews.append(tableView)
             
         }
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stats.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: "cell")
+        
+        let statsKeys = stats.keys.array
+        let statsValues = stats.values.array
+        
+        cell.textLabel?.tintColor = UIColor(red:0, green:0.6, blue:0, alpha:1)
+        
+        cell.textLabel?.text = statsKeys[indexPath.row]
+        
+        if statsKeys[indexPath.row] == "Time" {
+            let seconds = statsValues[indexPath.row] as Int
+            cell.detailTextLabel?.text = stringifySecondCount(seconds, false)
+        } else if statsKeys[indexPath.row] == "Distance" {
+            let distance = statsValues[indexPath.row] as Float
+            cell.detailTextLabel?.text = stringifyDistance(distance)
+        } else {
+            cell.detailTextLabel?.text = statsValues[indexPath.row].description
+        }
+        
+        return cell
         
     }
     

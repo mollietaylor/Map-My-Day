@@ -142,13 +142,21 @@ class VenueVC: UIViewController {
         
     }
     
-    
     func keyboardWillShow(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 view.frame.origin.y = -keyboardSize.height
             }
         }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y = 0
+    }
+    
+    // minimize keyboard on tap outside
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        view.endEditing(true)
     }
     
     @IBAction func addVenueToMap(sender: AnyObject) {
@@ -186,15 +194,6 @@ class VenueVC: UIViewController {
         
         navigationController?.dismissViewControllerAnimated(true, completion: nil)
         
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
-    }
-    
-    // minimize keyboard on tap outside
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        view.endEditing(true)
     }
     
 

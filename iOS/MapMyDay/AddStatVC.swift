@@ -32,16 +32,11 @@ class AddStatVC: UIViewController {
     func saveStat() {
         
         // save data
-//        DaysData.mainData().selectedDay["stats"].append()
         var currentDay = DaysData.mainData().selectedDay!
         var stats = currentDay["stats"] as [String:AnyObject]
         stats.updateValue(numberTextField.text, forKey: nameTextField.text)
         currentDay.setValue(stats, forKey: "stats")
-        currentDay.saveInBackgroundWithBlock { (success, error) -> Void in
-            
-            
-            
-        }
+        currentDay.saveInBackground()
         
         // dismiss VC
         navigationController?.popViewControllerAnimated(true)

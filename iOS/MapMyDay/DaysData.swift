@@ -23,6 +23,7 @@ class DaysData: NSObject {
         
         var daysQuery = PFQuery(className: "Day")
         daysQuery.orderByDescending("createdAt")
+        daysQuery.whereKey("public", equalTo: true)
         
         daysQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
