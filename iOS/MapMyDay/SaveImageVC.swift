@@ -16,12 +16,14 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var quotesView: UIImageView!
     @IBOutlet weak var commentLabel: UILabel!
     
     var addedViews = [UIView]()
     var stats = [String:AnyObject]()
     var currentDay:PFObject!
     var index = 0
+    var mapView = MKMapView()
     
     var media = [[String:String]]()
     
@@ -74,6 +76,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
         addedViews.removeAll()
         titleLabel.hidden = true
         categoryLabel.hidden = true
+        quotesView.hidden = true
         commentLabel.hidden = true
         
         let item = media[index] as [String:String]
@@ -84,7 +87,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             // display map view
             let tabBarHeight = tabBarController!.tabBar.frame.height
             let height = view.frame.height - 60 - tabBarHeight
-            var mapView = MKMapView(frame: CGRectMake(0, 0, mainView.frame.width, height))
+            mapView = MKMapView(frame: CGRectMake(0, 0, mainView.frame.width, height))
             mainView.addSubview(mapView)
             mapView.delegate = self
             addedViews.append(mapView)
@@ -99,6 +102,16 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             categoryLabel.hidden = false
             commentLabel.hidden = false
             
+            // mini map
+            let tabBarHeight = tabBarController!.tabBar.frame.height
+            let y = view.frame.height - 60 - tabBarHeight - 100 - 16
+            let width = view.frame.width - 32
+            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            mainView.addSubview(mapView)
+            mapView.delegate = self
+            addedViews.append(mapView)
+            mapDay(mapView, currentDay)
+            
             let venueQuery = PFQuery(className: "Venue")
             venueQuery.getObjectInBackgroundWithId(item["objectId"], block: { (object, error) -> Void in
                 
@@ -106,12 +119,23 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
                 self.categoryLabel.text = object["category"] as? String
                 if let venueComment = object["comment"] as? String {
                     self.commentLabel.text = venueComment
-                    self.commentLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Quotes")!)
+                    self.quotesView.hidden = false
                 } else {
                     self.commentLabel.text = ""
                 }
                 
+                if let location = object["location"] as? [String:AnyObject] {
+                    if let latitude = location["latitude"] as? Double {
+                        if let longitude = location["longitude"] as? Double {
+                            let mapLocation = CLLocationCoordinate2DMake(latitude, longitude)
+                            let span = MKCoordinateSpanMake(0.005, 0.005)
+                            self.mapView.setRegion(MKCoordinateRegionMake(mapLocation, span), animated: true)
+                        }
+                    }
+                }
+                
             })
+            
             
         } else if item["type"] == "text" {
             // TODO: add map view
@@ -119,6 +143,15 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
             titleLabel.hidden = false
             commentLabel.hidden = false
             
+            // mini map
+            let tabBarHeight = tabBarController!.tabBar.frame.height
+            let y = view.frame.height - 60 - tabBarHeight - 100 - 16
+            let width = view.frame.width - 32
+            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            mainView.addSubview(mapView)
+            mapView.delegate = self
+            addedViews.append(mapView)
+            mapDay(mapView, currentDay)
             
             let textQuery = PFQuery(className: "Text")
             textQuery.getObjectInBackgroundWithId(item["objectId"], block: { (object, error) -> Void in
@@ -130,12 +163,56 @@ class SaveImageVC: UIViewController, MKMapViewDelegate {
                 }
                 if let detail = object["detail"] as? String {
                     self.commentLabel.text = detail
-                    self.commentLabel.backgroundColor = UIColor(patternImage: UIImage(named: "Quotes")!)
+                    self.quotesView.hidden = false
                 } else {
                     self.commentLabel.text = ""
                 }
                 
+                if let location = object["location"] as? [String:AnyObject] {
+                    if let latitude = location["latitude"] as? Double {
+                        if let longitude = location["longitude"] as? Double {
+                            let mapLocation = CLLocationCoordinate2DMake(latitude, longitude)
+                            let span = MKCoordinateSpanMake(0.005, 0.005)
+                            self.mapView.setRegion(MKCoordinateRegionMake(mapLocation, span), animated: true)
+                        }
+                    }
+                }
+                
             })
+            
+        } else if item["type"] == "photo" {
+            
+            // mini map
+            let tabBarHeight = tabBarController!.tabBar.frame.height
+            let y = view.frame.height - 60 - tabBarHeight - 100 - 8
+            let width = view.frame.width - 32
+            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            mainView.addSubview(mapView)
+            mapView.delegate = self
+            addedViews.append(mapView)
+            mapDay(mapView, currentDay)
+            
+            let photoQuery = PFQuery(className: "Image")
+            photoQuery.getObjectInBackgroundWithId(item["objectId"], block: { (object, error) -> Void in
+                
+                let imageFile = object["image"] as? PFFile
+                imageFile?.getDataInBackgroundWithBlock { (imageData: NSData!, error: NSError!) -> Void in
+                    
+                    let image: UIImage = UIImage(data: imageData)!
+                    var imageView = UIImageView(image: image)
+                    let height = self.view.frame.height - 60 - tabBarHeight - 100 - 24
+                    let width = self.view.frame.width - 16
+                    imageView.frame = CGRectMake(8, 8, width, height)
+                    self.mainView.addSubview(imageView)
+                    self.addedViews.append(imageView)
+                    
+                }
+                
+            })
+            
+        } else if item["type"] == "stats" {
+            
+            // TODO:
             
         }
         
