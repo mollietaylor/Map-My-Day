@@ -76,6 +76,8 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
+        manager.distanceFilter = 10 // (meters) doesn't affect battery, but only adds point once they've moved this distance
+        
         mapView.delegate = self
         mapView.showsUserLocation = true
         

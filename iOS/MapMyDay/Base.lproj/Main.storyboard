@@ -588,14 +588,14 @@
         <scene sceneID="d9o-2j-1FU">
             <objects>
                 <collectionViewController storyboardIdentifier="exportCVC" title="Preview and Export" id="LNP-no-0qS" customClass="ExportCVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="o8W-8H-yGJ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" id="o8W-8H-yGJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0e4-Tb-4WB">
                             <size key="itemSize" width="300" height="300"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="600" height="60"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -609,26 +609,29 @@
                                 </view>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ub3-l1-h4F">
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="footerCell" id="Ub3-l1-h4F">
                             <rect key="frame" x="0.0" y="300" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwS-BC-NCT">
-                                    <rect key="frame" x="8" y="3" width="584" height="44"/>
+                                    <rect key="frame" x="8" y="8" width="584" height="44"/>
                                     <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="vf5-03-RNJ"/>
                                     </constraints>
-                                    <state key="normal" title="Save Images">
+                                    <state key="normal" title="Save Images to Camera Roll">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="saveImages:" destination="LNP-no-0qS" eventType="touchUpInside" id="9iI-IV-1LL"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="iwS-BC-NCT" firstAttribute="leading" secondItem="Ub3-l1-h4F" secondAttribute="leadingMargin" id="9ss-Qi-Jj9"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="iwS-BC-NCT" secondAttribute="bottom" constant="-5" id="X5S-9v-yI6"/>
-                                <constraint firstItem="iwS-BC-NCT" firstAttribute="top" secondItem="Ub3-l1-h4F" secondAttribute="topMargin" constant="-5" id="rwN-cj-yOM"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="iwS-BC-NCT" secondAttribute="bottom" id="X5S-9v-yI6"/>
+                                <constraint firstItem="iwS-BC-NCT" firstAttribute="top" secondItem="Ub3-l1-h4F" secondAttribute="topMargin" id="rwN-cj-yOM"/>
                                 <constraint firstItem="iwS-BC-NCT" firstAttribute="trailing" secondItem="Ub3-l1-h4F" secondAttribute="trailingMargin" id="s7J-cY-OMI"/>
                             </constraints>
                         </collectionReusableView>
