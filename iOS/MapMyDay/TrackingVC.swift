@@ -17,21 +17,22 @@ var venues = [String]()
 var media = [[String:String]]()
 var manager:CLLocationManager!
 
-let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "skating", "skiing", "snowmobile", "subway", "train", "other"]
-let modesColors = [UIColor(hue: 0, saturation: 1, brightness: 1, alpha: 1),
+let modesCollection = ["bicycle", "bus", "car", "ferry", "hiking", "horseback", "motorbike", "pedestrian", "plane", "running", "skating", "skiing", "snowmobile", "subway", "train", "other"]
+let modesColors = [UIColor(hue:0.09, saturation:0.82, brightness:0.92, alpha:1),
     UIColor(hue: 0.06, saturation: 1, brightness: 0.4, alpha: 1),
     UIColor(hue: 0.12, saturation: 1, brightness: 1, alpha: 1),
-    UIColor(hue: 0.18, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue:0.54, saturation:1, brightness:0.72, alpha:1),
     UIColor(hue: 0.24, saturation: 1, brightness: 1, alpha: 1),
     UIColor(hue: 0.30, saturation: 1, brightness: 0.4, alpha: 1),
     UIColor(hue: 0.36, saturation: 1, brightness: 1, alpha: 1),
     UIColor(hue: 0.42, saturation: 1, brightness: 0.4, alpha: 1),
     UIColor(hue: 0.48, saturation: 1, brightness: 1, alpha: 1),
-    UIColor(hue: 0.54, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue:0.42, saturation:0.81, brightness:0.91, alpha:1),
     UIColor(hue: 0.60, saturation: 1, brightness: 1, alpha: 1),
     UIColor(hue: 0.66, saturation: 1, brightness: 0.4, alpha: 1),
     UIColor(hue: 0.72, saturation: 1, brightness: 1, alpha: 1),
     UIColor(hue: 0.78, saturation: 1, brightness: 0.4, alpha: 1),
+    UIColor(hue: 0.30, saturation: 1, brightness: 0.4, alpha: 1),
     UIColor(hue: 0.84, saturation: 1, brightness: 1, alpha: 1)]
 
 class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {

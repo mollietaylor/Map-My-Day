@@ -8,10 +8,6 @@
 
 import UIKit
 
-let blueUIColor = UIColor.blueColor()
-let greenUIColor = UIColor.greenColor()
-let redUIColor = UIColor.redColor()
-
 class VenueVC: UIViewController {
     var venue = [String:AnyObject]()
 
@@ -48,21 +44,21 @@ class VenueVC: UIViewController {
             
             if let location: AnyObject = venue["location"] {
                 if let address = location["address"] as? String {
-                    addressButton.setTitleColor(blueUIColor, forState: .Normal)
+                    addressButton.setTitleColor(blueColor, forState: .Normal)
                     addressButton.setTitle(address, forState: .Normal)
                 }
             }
             
             if let url: AnyObject = venue["url"] {
-                urlButton.setTitleColor(blueUIColor, forState: .Normal)
+                urlButton.setTitleColor(blueColor, forState: .Normal)
                 urlButton.setTitle(url as? String, forState: .Normal)
             }
             
             if let hours: AnyObject = venue["hours"] {
                 if hours["isOpen"] as? Int == 1 {
-                    hoursLabel.textColor = greenUIColor
+                    hoursLabel.textColor = greenColor
                 } else {
-                    hoursLabel.textColor = redUIColor
+                    hoursLabel.textColor = redColor
                 }
                 hoursLabel.text = hours["status"] as? String
             }

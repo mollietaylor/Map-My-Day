@@ -8,6 +8,17 @@
 
 import UIKit
 
+let redColor = UIColor(red:0.7, green:0, blue:0.16, alpha:1)
+let orangeColor = UIColor(red:0.92, green:0.55, blue:0.16, alpha:1)
+let greenColor = UIColor(red:0.18, green:0.91, blue:0.55, alpha:1)
+let blueColor = UIColor(red:0, green:0.56, blue:0.72, alpha:1)
+let tanColor = UIColor(red:0.91, green:0.92, blue:0.84, alpha:1)
+let whiteColor = UIColor.whiteColor()
+let darkGrayColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1)
+let lightGrayColor = UIColor(red:0.56, green:0.56, blue:0.56, alpha:1)
+let primaryFont = "HelveticaNeue-Light"
+let boldFont = "HelveticaNeue"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,6 +35,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var loginVC = loginStoryboard.instantiateInitialViewController() as LoginViewController
         
         window?.rootViewController = loginVC
+        
+        // MARK: Aesthetics
+        UITabBar.appearance().tintColor = lightGrayColor
+        UITabBar.appearance().backgroundColor = tanColor
+        UITabBarItem.appearance().setTitleTextAttributes(([NSForegroundColorAttributeName:lightGrayColor, NSFontAttributeName:UIFont(name: primaryFont, size: 12)!]), forState: UIControlState.Normal)
+        UIButton.appearance().tintColor = whiteColor
+        UIButton.appearance().setTitleColor(whiteColor, forState: UIControlState.Normal)
+        // UIButton font seems impossible to set programmatically using appearance()
+        UISwitch.appearance().onTintColor = greenColor
+//        UITableViewCell.appearance().textLabel?.textColor = redColor
+        // apparently impossible to set tableview textlabel color
+        UITableViewCell.appearance().textLabel?.font = UIFont(name: primaryFont, size: 16)
+        UITableViewCell.appearance().detailTextLabel?.font = UIFont(name: primaryFont, size: 16)
+        
+//        UIBarButtonItem.appearance().tintColor = lightPrimary
+//        UINavigationBar.appearance().tintColor = lightPrimary
+//        UITableView.appearance().backgroundColor = lightPrimary
+//        UITableView.appearance().separatorColor = darkPrimary
+//        UITableViewCell.appearance().backgroundColor = lightPrimary
+//        var bgColorView = UIView()
+//        bgColorView.backgroundColor = mediumPrimary
+//        UITableViewCell.appearance().selectedBackgroundView = bgColorView
+//        UILabel.appearance().textColor = darkSecondary
+//        UITextView.appearance().textColor = darkSecondary
+//        UITextField.appearance().textColor = darkSecondary
+//        UITableViewCell.appearance().textLabel?.textColor = darkSecondary
+//        UINavigationBar.appearance().barTintColor = darkPrimary
+//        View.appearance().backgroundColor = lightPrimary
+//        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: headerFont, size: 24)!]
+//        UIBarButtonItem.appearance().setTitleTextAttributes(([NSFontAttributeName: UIFont(name: headerFont, size: 16)!]), forState: UIControlState.Normal)
+//        UITextField.appearance().font = UIFont(name: primaryFont, size: 16)
+//        UITextView.appearance().font = UIFont(name: primaryFont, size: 16)
+//        UILabel.appearance().font = UIFont(name: primaryFont, size: 16)
         
         return true
     }
