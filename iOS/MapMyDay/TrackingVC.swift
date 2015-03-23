@@ -273,10 +273,13 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
         
         isRunning = isRunning == false ? true : false
-        if startButton.titleLabel?.text == "Start" {
+        if startButton.imageView?.image == UIImage(named: "start_button") {
+//        if startButton.titleLabel?.text == "Start" {
             // start/resume
+            println("start")
             timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
-            startButton.setTitle("Pause", forState: .Normal)
+//            startButton.setTitle("Pause", forState: .Normal)
+            startButton.setImage(UIImage(named: "pause_button"), forState: UIControlState.Normal)
             // reset currentTrack
             currentTrack = ["mode": currentMode,
                 "track": [[:]]]
@@ -284,7 +287,8 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         } else {
             // pause
             timer.invalidate()
-            startButton.setTitle("Start", forState: UIControlState.Normal)
+//            startButton.setTitle("Start", forState: UIControlState.Normal)
+            startButton.setImage(UIImage(named: "start_button"), forState: UIControlState.Normal)
             // add currentTrack to tracks
             currentTrack["track"] = currentTrackPoints
             currentTrackPoints = [[:]]
@@ -326,7 +330,8 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         distance = 0
         isRunning = false
         hasStarted = false
-        startButton.setTitle("Start", forState: UIControlState.Normal)
+//        startButton.setTitle("Start", forState: UIControlState.Normal)
+        startButton.setImage(UIImage(named: "start_button"), forState: UIControlState.Normal)
         mapView.removeAnnotations(mapView.annotations)
         mapView.removeOverlays(mapView.overlays)
         timeLabel.text = "Time"

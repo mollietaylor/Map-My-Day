@@ -5,11 +5,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="fontawesome-webfont.ttf">
-            <string>FontAwesome</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--TrackingVC-->
         <scene sceneID="ff8-79-NaM">
@@ -20,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lhQ-uR-5QZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dS9-9q-w31">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-Nt-Pw0">
@@ -40,7 +35,7 @@
                                     <constraint firstAttribute="width" constant="41" id="APa-ek-lOt"/>
                                     <constraint firstAttribute="height" constant="41" id="fWw-Hl-eS8"/>
                                 </constraints>
-                                <state key="normal" image="pause_buttoin">
+                                <state key="normal" title="Start" image="start_button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -67,27 +62,11 @@
                                     <segue destination="x9p-0r-zB8" kind="show" id="uzn-rS-ko3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpG-ST-bP5">
-                                <rect key="frame" x="16" y="498" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="X5P-AP-hoT"/>
-                                    <constraint firstAttribute="width" constant="50" id="xaS-yr-y7N"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
-                                <state key="normal" title="">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addVenue:" destination="a84-mO-Uae" eventType="touchUpInside" id="Ne9-s2-yPs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tS-cl-E2O">
-                                <rect key="frame" x="16" y="449" width="50" height="50"/>
+                                <rect key="frame" x="16" y="449" width="44" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WXX-Xl-AzT"/>
-                                    <constraint firstAttribute="width" constant="50" id="b2C-Vd-l1l"/>
+                                    <constraint firstAttribute="width" constant="44" id="b2C-Vd-l1l"/>
                                 </constraints>
                                 <state key="normal" image="camera_button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,9 +184,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5W-Q6-kvd">
-                                <rect key="frame" x="74" y="472" width="50" height="50"/>
+                                <rect key="frame" x="60" y="472" width="44" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="l2j-mv-Ol3"/>
+                                    <constraint firstAttribute="width" constant="44" id="l2j-mv-Ol3"/>
                                     <constraint firstAttribute="height" constant="50" id="xkB-go-YpA"/>
                                 </constraints>
                                 <state key="normal" image="write_button">
@@ -216,6 +195,20 @@
                                 </state>
                                 <connections>
                                     <action selector="getText:" destination="a84-mO-Uae" eventType="touchUpInside" id="bdJ-Iq-DuD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpG-ST-bP5">
+                                <rect key="frame" x="16" y="498" width="44" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X5P-AP-hoT"/>
+                                    <constraint firstAttribute="width" constant="44" id="xaS-yr-y7N"/>
+                                </constraints>
+                                <state key="normal" image="venue_buton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addVenue:" destination="a84-mO-Uae" eventType="touchUpInside" id="Ne9-s2-yPs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -255,7 +248,7 @@
                             <constraint firstItem="Ffa-zO-Rux" firstAttribute="leading" secondItem="jQ9-ca-d9N" secondAttribute="trailing" constant="8" id="eRy-9i-S9z"/>
                             <constraint firstItem="SOK-rN-tC1" firstAttribute="top" secondItem="c9D-81-RtQ" secondAttribute="bottom" constant="5" id="exu-cw-wSX"/>
                             <constraint firstItem="c9D-81-RtQ" firstAttribute="leading" secondItem="b4K-2e-xuI" secondAttribute="trailing" constant="6" id="fgE-Ry-6mT"/>
-                            <constraint firstItem="w5W-Q6-kvd" firstAttribute="leading" secondItem="QpG-ST-bP5" secondAttribute="trailing" constant="8" id="gfZ-vv-ouh"/>
+                            <constraint firstItem="w5W-Q6-kvd" firstAttribute="leading" secondItem="QpG-ST-bP5" secondAttribute="trailing" id="gfZ-vv-ouh"/>
                             <constraint firstItem="c9D-81-RtQ" firstAttribute="trailing" secondItem="Ffa-zO-Rux" secondAttribute="trailing" id="hl9-qp-DzD"/>
                             <constraint firstItem="b4K-2e-xuI" firstAttribute="leading" secondItem="dS9-9q-w31" secondAttribute="leadingMargin" id="iwg-O5-bmU"/>
                             <constraint firstItem="c9D-81-RtQ" firstAttribute="trailing" secondItem="dS9-9q-w31" secondAttribute="trailingMargin" id="kQP-5O-6Zt"/>
@@ -279,9 +272,6 @@
                                 <exclude reference="a6x-PL-nQy"/>
                                 <exclude reference="Y9H-1Y-Gpr"/>
                                 <exclude reference="dmg-Zg-SeG"/>
-                                <exclude reference="6DJ-Bm-i9g"/>
-                                <exclude reference="96T-U4-MPZ"/>
-                                <exclude reference="B7d-sI-RQo"/>
                                 <exclude reference="07g-9M-Ycb"/>
                                 <exclude reference="GID-ri-CBu"/>
                                 <exclude reference="xaJ-Mm-y4W"/>
@@ -293,6 +283,9 @@
                                 <exclude reference="zwZ-JH-Nxb"/>
                                 <exclude reference="hl9-qp-DzD"/>
                                 <exclude reference="o5A-67-gvH"/>
+                                <exclude reference="6DJ-Bm-i9g"/>
+                                <exclude reference="96T-U4-MPZ"/>
+                                <exclude reference="B7d-sI-RQo"/>
                                 <exclude reference="99n-sO-24j"/>
                             </mask>
                         </variation>
@@ -323,7 +316,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GBD-Pz-krW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6GT-Yn-HNB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VcM-hc-oy5">
@@ -477,7 +470,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hgr-gu-snE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2An-ok-YSV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0u-Ri-05t">
@@ -605,7 +598,7 @@
             <objects>
                 <tableViewController title="My Days" id="7vw-oK-nP9" customClass="MyDaysTVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KuF-Mc-cEt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -647,7 +640,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="exportCVC" title="Preview and Export" id="LNP-no-0qS" customClass="ExportCVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" dataMode="prototypes" id="o8W-8H-yGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0e4-Tb-4WB">
@@ -711,7 +704,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Y1j-uO-Kfd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FfV-PC-hJ2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stat name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eup-wA-xpO">
@@ -757,10 +750,11 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mD3-st-6eV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5SN-KJ-r1P">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="5SN-KJ-r1P">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.9137254901960784" green="0.91764705882352937" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="OVG-DR-tLM" kind="relationship" relationship="viewControllers" id="95l-9w-EHj"/>
@@ -815,7 +809,7 @@
             <objects>
                 <tableViewController id="xwo-er-y7Y" customClass="ExploreTVC" customModule="MapMyDay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8k0-rP-4os">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -879,9 +873,10 @@
         <image name="days_icon" width="21" height="20"/>
         <image name="disclosure" width="17" height="44"/>
         <image name="explore_icon" width="21" height="21"/>
-        <image name="pause_buttoin" width="41" height="41"/>
+        <image name="start_button" width="41" height="41"/>
         <image name="stop_button" width="41" height="41"/>
         <image name="track_icon" width="21" height="21"/>
+        <image name="venue_buton" width="41" height="41"/>
         <image name="write_button" width="41" height="41"/>
     </resources>
 </document>
