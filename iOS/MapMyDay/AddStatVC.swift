@@ -16,10 +16,13 @@ class AddStatVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Add Stat"
+        title = "Add Stat" // Helvetica Neue 21
         
         navigationController?.navigationBarHidden = false
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "saveStat")
+        // right check_button
+        // left x_button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "check_button")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Done, target: self, action: "saveStat")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "x_button")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), style: UIBarButtonItemStyle.Plain, target: self, action: "cancelStat")
 
         // Do any additional setup after loading the view.
     }
@@ -41,6 +44,10 @@ class AddStatVC: UIViewController {
         // dismiss VC
         navigationController?.popViewControllerAnimated(true)
         
+    }
+    
+    func cancelStat() {
+        navigationController?.popViewControllerAnimated(true)
     }
     
 

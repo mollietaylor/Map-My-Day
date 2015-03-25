@@ -138,16 +138,20 @@ class VenueVC: UIViewController {
         
     }
     
+    let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+    
     func keyboardWillShow(notification: NSNotification) {
+        let navBarHeight = navigationController?.navigationBar.frame.size.height
         if let userInfo = notification.userInfo {
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                view.frame.origin.y = -keyboardSize.height
+                view.frame.origin.y = -keyboardSize.height + navBarHeight! + statusBarHeight
             }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
+        let navBarHeight = navigationController?.navigationBar.frame.size.height
+        view.frame.origin.y = 0 + navBarHeight! + statusBarHeight
     }
     
     // minimize keyboard on tap outside

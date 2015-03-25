@@ -22,13 +22,13 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0W-xg-wGb">
                                 <rect key="frame" x="16" y="536" width="280" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17647058823529413" green="0.90588235294117647" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Gza-wg-0V8"/>
                                     <constraint firstAttribute="width" constant="280" id="acO-aE-Jqz"/>
                                 </constraints>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.99607843139999996" green="0.5450980392" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -65,12 +65,12 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZn-Xs-cNd">
                                 <rect key="frame" x="304" y="536" width="280" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17647058823529413" green="0.90588235294117647" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="rOy-Mp-Xyi"/>
                                 </constraints>
                                 <state key="normal" title="Register">
-                                    <color key="titleColor" red="0.99607843139999996" green="0.5450980392" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -87,13 +87,13 @@
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynP-aO-7ne">
                                 <rect key="frame" x="16" y="536" width="568" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17647058823529413" green="0.90588235294117647" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="GNd-xk-JvD"/>
                                     <constraint firstAttribute="width" constant="280" id="yZH-vD-YqO"/>
                                 </constraints>
                                 <state key="normal" title="Go!">
-                                    <color key="titleColor" red="0.99607843139999996" green="0.5450980392" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -107,7 +107,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.10153489559999999" green="0.6349509954" blue="0.15632745619999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="a0W-xg-wGb" firstAttribute="leading" secondItem="IGJ-CC-Nth" secondAttribute="leadingMargin" id="02r-LX-EAC"/>
                             <constraint firstItem="IZn-Xs-cNd" firstAttribute="trailing" secondItem="IGJ-CC-Nth" secondAttribute="trailingMargin" id="2BG-C1-E4e"/>

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = loginVC
         
         // MARK: Aesthetics
+        UINavigationBar.appearance().translucent = false
         UITabBar.appearance().tintColor = lightGrayColor
         UITabBar.appearance().backgroundColor = tanColor
         UITabBarItem.appearance().setTitleTextAttributes(([NSForegroundColorAttributeName:lightGrayColor, NSFontAttributeName:UIFont(name: primaryFont, size: 12)!]), forState: UIControlState.Normal)
@@ -48,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // apparently impossible to set tableview textlabel color
         UITableViewCell.appearance().textLabel?.font = UIFont(name: primaryFont, size: 16)
         UITableViewCell.appearance().detailTextLabel?.font = UIFont(name: primaryFont, size: 16)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: boldFont, size: 21)!]
         
 //        UIBarButtonItem.appearance().tintColor = lightPrimary
 //        UINavigationBar.appearance().tintColor = lightPrimary
@@ -63,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UITableViewCell.appearance().textLabel?.textColor = darkSecondary
 //        UINavigationBar.appearance().barTintColor = darkPrimary
 //        View.appearance().backgroundColor = lightPrimary
-//        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: headerFont, size: 24)!]
 //        UIBarButtonItem.appearance().setTitleTextAttributes(([NSFontAttributeName: UIFont(name: headerFont, size: 16)!]), forState: UIControlState.Normal)
 //        UITextField.appearance().font = UIFont(name: primaryFont, size: 16)
 //        UITextView.appearance().font = UIFont(name: primaryFont, size: 16)
