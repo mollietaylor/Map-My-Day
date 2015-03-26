@@ -58,6 +58,9 @@ class ExploreTVC: UITableViewController {
         let day = DaysData.mainData().days[indexPath.row]
         
         cell.dayInfo = day
+        cell.textLabel?.textColor = UIColor(red:0.41, green:0.86, blue:0.56, alpha:1)
+        cell.textLabel?.font = UIFont(name: primaryFont, size: 14)
+        cell.detailTextLabel?.font = UIFont(name: primaryFont, size: 14)
 
         return cell
     
