@@ -17,6 +17,7 @@ let whiteColor = UIColor.whiteColor()
 let darkGrayColor = UIColor(red:0.23, green:0.23, blue:0.23, alpha:1)
 let lightGrayColor = UIColor(red:0.56, green:0.56, blue:0.56, alpha:1)
 let primaryFont = "HelveticaNeue-Light"
+let thinFont = "HelveticaNeue-Thin"
 let boldFont = "HelveticaNeue"
 
 @UIApplicationMain

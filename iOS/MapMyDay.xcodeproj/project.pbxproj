@@ -42,6 +42,7 @@
 		ECE0EA021AB5DA8B004CD571 /* MyDaysTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0EA011AB5DA8B004CD571 /* MyDaysTVC.swift */; };
 		ECE0EA041AB5DCE3004CD571 /* ViewDayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0EA031AB5DCE3004CD571 /* ViewDayVC.swift */; };
 		ECE0EA061AB5DE9C004CD571 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0EA051AB5DE9C004CD571 /* DayCell.swift */; };
+		ECE47B1B1AC465D7000FF7C5 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE47B1A1AC465D7000FF7C5 /* CustomTableView.swift */; };
 		ECF0708C1AB65BC900AFC8B8 /* CustomPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF0708B1AB65BC900AFC8B8 /* CustomPolyline.swift */; };
 		ECF647C21AA692F3000E9CCF /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC13A7DF1AA4EE7000B9AD6F /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		ECE0EA011AB5DA8B004CD571 /* MyDaysTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDaysTVC.swift; sourceTree = "<group>"; };
 		ECE0EA031AB5DCE3004CD571 /* ViewDayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDayVC.swift; sourceTree = "<group>"; };
 		ECE0EA051AB5DE9C004CD571 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		ECE47B1A1AC465D7000FF7C5 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		ECE987921AB339DF00EF4995 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		ECF0708B1AB65BC900AFC8B8 /* CustomPolyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPolyline.swift; sourceTree = "<group>"; };
 		ECF647C01AA68E13000E9CCF /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				ECF0708B1AB65BC900AFC8B8 /* CustomPolyline.swift */,
+				ECE47B1A1AC465D7000FF7C5 /* CustomTableView.swift */,
 			);
 			name = Aesthetics;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				ECE0EA061AB5DE9C004CD571 /* DayCell.swift in Sources */,
 				EC05972A1AB9CA0C007AC46A /* VenueVC.swift in Sources */,
 				EC87B3B91AB3474B00FBE811 /* TrackingVC.swift in Sources */,
+				ECE47B1B1AC465D7000FF7C5 /* CustomTableView.swift in Sources */,
 				ECE0EA021AB5DA8B004CD571 /* MyDaysTVC.swift in Sources */,
 				EC0597261AB9B7B4007AC46A /* FourSquareRequest.swift in Sources */,
 				EC87B3BA1AB3474B00FBE811 /* LoginVC.swift in Sources */,

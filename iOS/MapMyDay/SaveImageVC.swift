@@ -16,8 +16,9 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var quotesView: UIImageView!
+    @IBOutlet weak var quotesView: UIView!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var mapViewView: UIView!
     
     var addedViews = [UIView]()
     var stats = [String:AnyObject]()
@@ -29,6 +30,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
     var tableView = UITableView()
     
     var tabBarHeight: CGFloat = 0
+    var statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +94,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
         if item["type"] == "map" {
             
             // display map view
-            let height = view.frame.height - 60 - tabBarHeight
+            let height = view.frame.height - 60 - tabBarHeight - statusBarHeight
             mapView = MKMapView(frame: CGRectMake(0, 0, mainView.frame.width, height))
             mainView.addSubview(mapView)
             mapView.delegate = self
@@ -111,7 +113,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
             // mini map
             let y = view.frame.height - 60 - tabBarHeight - 100 - 16
             let width = view.frame.width - 32
-            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            mapView = MKMapView(frame: mapViewView.frame)
             mainView.addSubview(mapView)
             mapView.delegate = self
             addedViews.append(mapView)
@@ -151,7 +153,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
             // mini map
             let y = view.frame.height - 60 - tabBarHeight - 100 - 16
             let width = view.frame.width - 32
-            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            mapView = MKMapView(frame: mapViewView.frame)
             mainView.addSubview(mapView)
             mapView.delegate = self
             addedViews.append(mapView)
@@ -187,9 +189,8 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
         } else if item["type"] == "photo" {
             
             // mini map
-            let y = view.frame.height - 60 - tabBarHeight - 100 - 8
-            let width = view.frame.width - 32
-            mapView = MKMapView(frame: CGRectMake(16, y, width, 100))
+            let y = view.frame.width
+            mapView = MKMapView(frame: CGRectMake(0, y, view.frame.width, view.frame.height - y - 60 - statusBarHeight))
             mainView.addSubview(mapView)
             mapView.delegate = self
             addedViews.append(mapView)
@@ -203,9 +204,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
                     
                     let image: UIImage = UIImage(data: imageData)!
                     var imageView = UIImageView(image: image)
-                    let height = self.view.frame.height - 60 - self.tabBarHeight - 100 - 24
-                    let width = self.view.frame.width - 16
-                    imageView.frame = CGRectMake(8, 8, width, height)
+                    imageView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.width)
                     self.mainView.addSubview(imageView)
                     self.addedViews.append(imageView)
                     
@@ -226,8 +225,29 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
         
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        var headerView = UIView(frame: CGRectMake(0, 0, view.frame.width, 60))
+        let headerLabel = UILabel(frame: headerView.frame)
+        headerLabel.text = "STATS"
+        headerLabel.textColor = UIColor(red:0.53, green:0.53, blue:0.53, alpha:1)
+        headerLabel.font = UIFont(name: thinFont, size: 28)
+        headerLabel.textAlignment = NSTextAlignment.Center
+        headerView.addSubview(headerLabel)
+        
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stats.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -240,6 +260,9 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
         cell.textLabel?.tintColor = UIColor(red:0, green:0.6, blue:0, alpha:1)
         
         cell.textLabel?.text = statsKeys[indexPath.row]
+        cell.textLabel?.font = UIFont(name: primaryFont, size: 12)
+        cell.textLabel?.textColor = UIColor(red:0.53, green:0.53, blue:0.53, alpha:1)
+        cell.detailTextLabel?.font = UIFont(name: primaryFont, size: 24)
         
         if statsKeys[indexPath.row] == "Time" {
             let seconds = statsValues[indexPath.row] as Int

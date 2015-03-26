@@ -29,7 +29,7 @@ class ViewDayVC: UIViewController, UITableViewDelegate, UITableViewDataSource, M
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(true)        
         
         navigationController?.navigationBarHidden = true
         

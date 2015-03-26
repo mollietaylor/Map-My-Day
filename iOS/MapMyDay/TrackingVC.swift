@@ -281,7 +281,6 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         if startButton.imageView?.image == UIImage(named: "start_button") {
 //        if startButton.titleLabel?.text == "Start" {
             // start/resume
-            println("start")
             timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "eachSecond", userInfo: nil, repeats: true)
 //            startButton.setTitle("Pause", forState: .Normal)
             startButton.setImage(UIImage(named: "pause_button"), forState: UIControlState.Normal)
