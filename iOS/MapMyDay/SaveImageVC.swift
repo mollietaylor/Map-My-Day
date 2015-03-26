@@ -189,7 +189,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
         } else if item["type"] == "photo" {
             
             // mini map
-            let y = view.frame.width
+            let y = (view.frame.width * 3 / 4)
             mapView = MKMapView(frame: CGRectMake(0, y, view.frame.width, view.frame.height - y - 60 - statusBarHeight))
             mainView.addSubview(mapView)
             mapView.delegate = self
@@ -204,7 +204,7 @@ class SaveImageVC: UIViewController, MKMapViewDelegate, UITableViewDataSource, U
                     
                     let image: UIImage = UIImage(data: imageData)!
                     var imageView = UIImageView(image: image)
-                    imageView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.width)
+                    imageView.frame = CGRectMake(0, 0, self.view.frame.width, (self.view.frame.width * 3 / 4))
                     self.mainView.addSubview(imageView)
                     self.addedViews.append(imageView)
                     

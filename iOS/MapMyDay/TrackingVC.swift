@@ -117,7 +117,7 @@ class TrackingVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 44, 44))
         imageView.image = UIImage(named: modesCollection[indexPath.row])
-        imageView.backgroundColor = modesColors[indexPath.row]
+//        imageView.backgroundColor = modesColors[indexPath.row]
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         cell.addSubview(imageView)
